@@ -1,29 +1,18 @@
 import React from "react";
 
-const SearchBar = ({ setSearchValue }) => {
-  //   const onInputChange = event => {
-  //     console.log(event.target.value);
-  //     this.setState({ term: event.target.value });
-  //   };
-
-  //   const onFormSubmit = event => {
-  //     event.preventDefault();
-  //     // this.props.fetchWeather(this.state.term);
-  //     this.setState({ term: "" });
-  //   };
-
+const SearchBar = ({ searchValue, setSearchValue }) => {
   return (
     <form className="input-group">
+      <label htmlFor="searchBar" className="hidden" />
       <input
+        name="searchBar"
         type="text"
-        placeholder="look up your favorite city"
+        placeholder="Search for team or player"
         className="form-control"
-        // value={this.state.term}
-        onChange={e => setSearchValue(e)}
+        value={searchValue}
+        onChange={e => setSearchValue(e.target.value)}
+        aria-label="search bar"
       />
-      <span className="input-group-button">
-        <input type="submit" className="btn btn-primary" />
-      </span>
     </form>
   );
 };

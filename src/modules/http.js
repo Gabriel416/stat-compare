@@ -1,3 +1,4 @@
+import jsonp from "jsonp";
 import axios from "axios";
 
 const IS_LOADING = "IS_LOADING";
@@ -54,14 +55,27 @@ export default (state = initialState, action) => {
 export const getData = url => {
   return dispatch => {
     dispatch({ type: IS_LOADING, payload: true });
+
+    // jsonp(url, null, (err, data) => {
+    //   if (err) {
+    //     dispatch({ type: IS_LOADING, payload: false });
+    //     console.error(err.message);
+    //   } else {
+    //     dispatch({ type: IS_LOADING, payload: false });
+    //     console.log(data);
+    //     return data;
+    //   }
+    // });
     axios
       .get(url)
-      .then(res => {
+      .then(response => {
         dispatch({ type: IS_LOADING, payload: false });
-        console.log(res, "res");
+        console.log(response, "response");
+        return response;
       })
       .catch(error => {
         dispatch({ type: IS_LOADING, payload: false });
+        return error;
         console.log(error);
       });
   };

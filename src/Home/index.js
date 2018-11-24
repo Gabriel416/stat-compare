@@ -17,11 +17,11 @@ class Home extends Component {
   }
 
   render() {
-    const { setSearchValue, getData } = this.props;
+    const { isLoading, searchValue, setSearchValue, getData } = this.props;
 
     return (
       <div>
-        <Searchbar setSearchValue={setSearchValue} />
+        <Searchbar searchValue={searchValue} setSearchValue={setSearchValue} />
         {/* <AttractSelector
           openCustomModal={openCustomModal}
           attractScreens={attractScreens}
