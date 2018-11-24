@@ -3,6 +3,9 @@ import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
 import { setSearchValue } from "../modules/searchbar";
 import { getData } from "../modules/http";
+import { fetchPlayersData } from "../modules/players";
+import { fetchTeamsData } from "../modules/teams";
+import { fetchScoreboardData } from "../modules/scoreboard";
 
 import Searchbar from "../shared/components/Searchbar";
 
@@ -12,8 +15,14 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    //   fetch latest teams stats
-    // this.props.fetch();
+    const {
+      fetchTeamsData,
+      fetchPlayersData,
+      fetchScoreboardData
+    } = this.props;
+    fetchPlayersData();
+    fetchTeamsData();
+    fetchScoreboardData();
   }
 
   render() {
@@ -22,32 +31,6 @@ class Home extends Component {
     return (
       <div>
         <Searchbar searchValue={searchValue} setSearchValue={setSearchValue} />
-        {/* <AttractSelector
-          openCustomModal={openCustomModal}
-          attractScreens={attractScreens}
-          setSelectedPreAttractState={setSelectedPreAttractState}
-          setSelectedPreAttractDatabase={setSelectedPreAttractDatabase}
-          selectedPreAttract={selectedPreAttract}
-        />
-
-        <AttractPreview
-          setActiveStep={setActiveStep}
-          selectedPreAttract={selectedPreAttract}
-          attractsLoading={attractsLoading}
-        />
-
-        <TemplateModal
-          isOpen={isOpen}
-          closeTemplateModal={closeTemplateModal}
-        />
-        <CustomDesignModal
-          uploadAssets={uploadAssets}
-          model={model}
-          isOpen={customDesignOpen}
-          openTemplateModal={openTemplateModal}
-          closeCustomModal={closeCustomModal}
-          uploadCompletedPercent={uploadCompletedPercent}
-        /> */}
       </div>
     );
   }
@@ -62,7 +45,10 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       setSearchValue,
-      getData
+      getData,
+      fetchPlayersData,
+      fetchTeamsData,
+      fetchScoreboardData
     },
     dispatch
   );

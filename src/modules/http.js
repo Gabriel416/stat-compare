@@ -1,5 +1,5 @@
-import jsonp from "jsonp";
 import axios from "axios";
+import { proxy } from "../config";
 
 const IS_LOADING = "IS_LOADING";
 
@@ -55,28 +55,17 @@ export default (state = initialState, action) => {
 export const getData = url => {
   return dispatch => {
     dispatch({ type: IS_LOADING, payload: true });
-
-    // jsonp(url, null, (err, data) => {
-    //   if (err) {
-    //     dispatch({ type: IS_LOADING, payload: false });
-    //     console.error(err.message);
-    //   } else {
-    //     dispatch({ type: IS_LOADING, payload: false });
-    //     console.log(data);
-    //     return data;
-    //   }
-    // });
-    axios
-      .get(url)
+    return axios
+      .get(proxy + url)
       .then(response => {
         dispatch({ type: IS_LOADING, payload: false });
         console.log(response, "response");
-        return response;
+        return response.data;
       })
       .catch(error => {
         dispatch({ type: IS_LOADING, payload: false });
-        return error;
         console.log(error);
+        return error;
       });
   };
 };

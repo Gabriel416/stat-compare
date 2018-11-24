@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
 export const fetchTeamsData = () => {
   return async dispatch => {
     const teamsData = await dispatch(getData(teamsUrl));
-    console.log(teamsData, "teams data");
-    dispatch({ type: SET_TEAM_DATA, payload: teamsData });
+    // vegas for some reason is the standard 30 team nba list
+    dispatch({ type: SET_TEAM_DATA, payload: teamsData.league.vegas });
   };
 };

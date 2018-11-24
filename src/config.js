@@ -1,5 +1,8 @@
-export const playerUrl = `https://data.nba.net/10s/prod/v1/${new Date().getFullYear()}/players.json`;
+export const proxy = "https://stat-compare-proxy.herokuapp.com/";
+export const playersUrl = `https://data.nba.net/10s/prod/v1/${new Date().getFullYear()}/players.json`;
 export const teamsUrl = `https://data.nba.net/10s/prod/v1/${new Date().getFullYear()}/teams.json`;
+export const scoreBoardUrl = `https://data.nba.net/prod/v1/${new Date().getFullYear()}${new Date().getMonth() +
+  1}${new Date().getDate()}/scoreboard.json`;
 export const todayUrl = "https://data.nba.net/10s/prod/v1/today.json";
 export const shotChart =
   "https://stats.nba.com/events/?flag=3&CFID=&CFPARAMS=&PlayerID=201933&TeamID=1610612765&GameID=0021800049&ContextMeasure=FG3A&Season=2018-19&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=31800&section=game&sct=plot";

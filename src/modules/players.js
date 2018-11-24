@@ -1,68 +1,29 @@
-import axios from "axios";
+import { getData } from "./http";
+import { playersUrl } from "../config";
 
-const IS_LOADING = "IS_LOADING";
+const SET_PLAYERS_DATA = "SET_PLAYERS_DATA";
 
 const initialState = {
-  isLoading: false
+  playersData: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case IS_LOADING: {
+    case SET_PLAYERS_DATA: {
       return {
         ...state,
-        isLoading: action.payload
+        playersData: action.payload
       };
     }
-    // case ASSETS_FETCHED: {
-    //   return {
-    //     ...state,
-    //     assetsData: action.payload.data,
-    //     pagination: _.omit(action.payload, ["data"]),
-    //     isFetchingAssets: false
-    //   };
-    // }
-    // case IS_DELETING_ASSET: {
-    //   return {
-    //     ...state,
-    //     isDeletingAsset: true
-    //   };
-    // }
-    // case DELETED_ASSET: {
-    //   return {
-    //     ...state,
-    //     isDeletingAsset: false
-    //   };
-    // }
-    // case FILTER_CLICKED: {
-    //   return {
-    //     ...state,
-    //     asset: action.payload
-    //   };
-    // }
-    // case SEARCH_INPUT_CHANGE: {
-    //   return {
-    //     ...state,
-    //     searchValue: action.payload
-    //   };
-    // }
     default:
       return state;
   }
 };
 
-export const getData = url => {
-  return dispatch => {
-    dispatch({ type: IS_LOADING, payload: true });
-    axios
-      .get(url)
-      .then(res => {
-        dispatch({ type: IS_LOADING, payload: false });
-        console.log(res, "res");
-      })
-      .catch(error => {
-        dispatch({ type: IS_LOADING, payload: false });
-        console.log(error);
-      });
+export const fetchPlayersData = () => {
+  return async dispatch => {
+    const playersData = await dispatch(getData(playersUrl));
+    // vegas for some reason is the standard 30 team nba list
+    dispatch({ type: SET_PLAYERS_DATA, payload: playersData.league.vegas });
   };
 };

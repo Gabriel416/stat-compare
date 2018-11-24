@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { bindActionCreators, compose } from "redux";
-import { connect } from "react-redux";
-import { fetchTeamsData } from "./modules/teams";
 import Home from "./Home";
 import logo from "./logo.svg";
 import "./App.css";
@@ -9,11 +6,6 @@ import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    const { fetchTeamsData } = this.props;
-    fetchTeamsData();
   }
 
   render() {
@@ -39,24 +31,4 @@ class App extends Component {
   }
 }
 
-// export default App;
-
-// const mapStateToProps = state => ({
-//   searchValue: state.searchbar.searchValue,
-//   isLoading: state.http.isLoading
-// });
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      fetchTeamsData
-    },
-    dispatch
-  );
-
-export default compose(
-  connect(
-    null,
-    mapDispatchToProps
-  )
-)(App);
+export default App;
