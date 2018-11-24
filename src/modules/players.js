@@ -4,7 +4,7 @@ import { playersUrl } from "../config";
 const SET_PLAYERS_DATA = "SET_PLAYERS_DATA";
 
 const initialState = {
-  playersData: null
+  playerData: null
 };
 
 export default (state = initialState, action) => {
@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
     case SET_PLAYERS_DATA: {
       return {
         ...state,
-        playersData: action.payload
+        playerData: action.payload
       };
     }
     default:

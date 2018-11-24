@@ -8,6 +8,7 @@ import { fetchTeamsData } from "../modules/teams";
 import { fetchScoreboardData } from "../modules/scoreboard";
 
 import Searchbar from "../shared/components/Searchbar";
+import Scoreboard from "./components/Scoreboard";
 
 class Home extends Component {
   constructor(props) {
@@ -26,17 +27,29 @@ class Home extends Component {
   }
 
   render() {
-    const { isLoading, searchValue, setSearchValue, getData } = this.props;
+    const {
+      players,
+      teams,
+      scoreboardData,
+      isLoading,
+      searchValue,
+      setSearchValue,
+      getData
+    } = this.props;
 
     return (
       <div>
         <Searchbar searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Scoreboard scoreboardData={scoreboardData} teams={teams} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  players: state.players.playerData,
+  teams: state.teams.teamData,
+  scoreboardData: state.scoreboard,
   searchValue: state.searchbar.searchValue,
   isLoading: state.http.isLoading
 });
