@@ -8,8 +8,14 @@ body {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .app-wrapper {
-    width: 100%;
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .app-wrapper {
+    width: 97%;
   }
 }

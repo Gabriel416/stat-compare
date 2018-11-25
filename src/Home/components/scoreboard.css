@@ -5,9 +5,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 15px 0px;
-  -webkit-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 1);
-  -moz-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 1);
-  box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 1);
+  -webkit-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
+  -moz-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
+  box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
   padding: 30px 10px;
   border-radius: 10px;
   cursor: pointer;
@@ -33,36 +33,64 @@
 }
 
 .home-score {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .away-score {
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
-.home-logo-section span {
-  margin-left: 8px;
-}
-
-.away-logo-section span {
-  margin-right: 8px;
-}
-
-@media screen and (max-width: 900px) {
-  .game-card-wrapper img {
-    width: 50px;
-    height: 50px;
-  }
-  .home-score,
-  .away-score {
-    font-size: 20px;
+@media screen and (max-width: 1300px) {
+  .game-status {
+    top: 37%;
   }
 
   .home-score {
-    margin-right: 20px;
+    margin-right: 16px;
   }
 
   .away-score {
-    margin-left: 20px;
+    margin-left: 16px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .game-card-wrapper img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .home-score {
+    margin-right: 15px;
+  }
+
+  .away-score {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .game-card-wrapper img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .home-team-section,
+  .away-team-section,
+  .game-status {
+    font-size: 12px;
+  }
+
+  .home-score,
+  .away-score {
+    font-size: 25px;
+  }
+
+  .home-score {
+    margin-right: 5px;
+  }
+
+  .away-score {
+    margin-left: 5px;
   }
 }

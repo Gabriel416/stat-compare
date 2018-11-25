@@ -21,9 +21,14 @@ class Home extends Component {
       fetchPlayersData,
       fetchScoreboardData
     } = this.props;
+
     fetchPlayersData();
     fetchTeamsData();
     fetchScoreboardData();
+
+    setInterval(() => {
+      fetchScoreboardData();
+    }, 20000);
   }
 
   render() {

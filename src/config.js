@@ -158,7 +158,7 @@ export const teamStyles = {
     alternate: "#000000",
     logo: `https://i.logocdn.com/nba/current/phoenix-suns.svg`
   },
-  trailBlazers: {
+  blazers: {
     primary: "#E03A3E",
     secondary: "#000000",
     alternate: "#000000",
