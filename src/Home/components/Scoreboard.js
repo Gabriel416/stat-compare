@@ -1,8 +1,44 @@
 import React from "react";
+import classnames from "classnames";
+import moment from "moment";
 import { todaysDate, teamStyles } from "../../config";
+import "./scoreboard.css";
 
 const Scoreboard = ({ scoreboardData, teams }) => {
   const { scoreBoardGames, numberOfGames } = scoreboardData;
+
+  const calculateGameStatus = game => {
+    // Game hasn't started
+    if (!game.isGameActivated && !parseFloat(game.gameDuration.minutes)) {
+      const gameStart = `${moment(game.startDateEastern, "YYYYMMDD").format(
+        "MM/DD/YYYY"
+      )} ${game.startTimeEastern}`;
+      return <span>Game starts {gameStart}</span>;
+    }
+
+    if (game.period.isHalftime) {
+      return <span>Halftime</span>;
+    }
+
+    // Game is over and no overtime
+    if (game.extendedStatusNum === 0 && !game.isGameActivated) {
+      return <span>Final</span>;
+    }
+
+    // Game is in overtime
+    if (game.extendedStatusNum > 0 && game.isGameActivated) {
+      return <span>Overtime {game.clock}</span>;
+    }
+
+    return (
+      <div>
+        <span>{`Q${game.period.current}`}</span>
+        <br />
+        <span>{game.clock}</span>
+      </div>
+    );
+  };
+
   const renderGames = () => {
     const { scoreBoardGames } = scoreboardData;
 
@@ -11,14 +47,32 @@ const Scoreboard = ({ scoreboardData, teams }) => {
       const homeTeam = teams.find(team => team.teamId === game.hTeam.teamId);
       const awayTeam = teams.find(team => team.teamId === game.vTeam.teamId);
       console.log("homeTeam :", homeTeam);
+      console.log(game, "GAMES");
       return (
-        <div className="game-card-wrapper">
-          <span>
-            <img
-              src={teamStyles[homeTeam.urlName].logo}
-              alt="home team logo"
-              style={{ width: "60px", height: "60px" }}
-            />
+        <div
+          className={classnames("game-card-wrapper", "col-xs-12 col-sm-12")}
+          key={game.gameId}
+        >
+          <span className={classnames("home-logo-section", "col-xs-4")}>
+            <img src={teamStyles[homeTeam.urlName].logo} alt="home team logo" />
+            <div>
+              <span>{homeTeam.nickname}</span>
+              <br />
+              <span>{`${game.hTeam.win}-${game.hTeam.loss}`}</span>
+            </div>
+          </span>
+          <div className={classnames("col-xs-4", "game-status")}>
+            <span className="home-score">{game.hTeam.score}</span>
+            {calculateGameStatus(game)}
+            <span className="away-score">{game.vTeam.score}</span>
+          </div>
+          <span className={classnames("away-logo-section", "col-xs-4")}>
+            <img src={teamStyles[awayTeam.urlName].logo} alt="away team logo" />
+            <div>
+              <span>{awayTeam.nickname}</span>
+              <br />
+              <span>{`${game.vTeam.win}-${game.vTeam.loss}`}</span>
+            </div>
           </span>
         </div>
       );
@@ -29,7 +83,9 @@ const Scoreboard = ({ scoreboardData, teams }) => {
     <div>
       <h3>Games</h3>
       <p>{todaysDate}</p>
-      <div>{scoreBoardGames && teams && renderGames()}</div>
+      <div className="container">
+        <div className="row">{scoreBoardGames && teams && renderGames()}</div>
+      </div>
     </div>
   );
 };

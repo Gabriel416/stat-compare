@@ -1,3 +1,68 @@
 .game-card-wrapper {
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 15px 0px;
+  -webkit-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 1);
+  -moz-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 1);
+  box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 1);
+  padding: 30px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.game-card-wrapper img {
+  width: 60px;
+  height: 60px;
+}
+
+.game-status {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home-score,
+.away-score {
+  font-size: 30px;
+}
+
+.home-score {
+  margin-right: 40px;
+}
+
+.away-score {
+  margin-left: 40px;
+}
+
+.home-logo-section span {
+  margin-left: 8px;
+}
+
+.away-logo-section span {
+  margin-right: 8px;
+}
+
+@media screen and (max-width: 900px) {
+  .game-card-wrapper img {
+    width: 50px;
+    height: 50px;
+  }
+  .home-score,
+  .away-score {
+    font-size: 20px;
+  }
+
+  .home-score {
+    margin-right: 20px;
+  }
+
+  .away-score {
+    margin-left: 20px;
+  }
 }

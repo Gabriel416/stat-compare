@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .app-wrapper {
+    width: 100%;
+  }
+}

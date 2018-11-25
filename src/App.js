@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Home from "./Home";
 import logo from "./logo.svg";
+import classnames from "classnames";
 import "./App.css";
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={classnames("App", "app-wrapper")}>
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
