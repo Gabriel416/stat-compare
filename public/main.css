@@ -1,11 +1,16 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #ecf0f1;
 }
 
 .app-wrapper {
   width: 70%;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 1200px) {

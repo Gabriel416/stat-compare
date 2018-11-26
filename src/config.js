@@ -6,6 +6,9 @@ export const scoreBoardUrl = `https://data.nba.net/prod/v1/${new Date().getFullY
 export const todayUrl = "https://data.nba.net/10s/prod/v1/today.json";
 export const shotChart =
   "https://stats.nba.com/events/?flag=3&CFID=&CFPARAMS=&PlayerID=201933&TeamID=1610612765&GameID=0021800049&ContextMeasure=FG3A&Season=2018-19&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=31800&section=game&sct=plot";
+
+export const playerHeadShot = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/teamId/${new Date().getFullYear()}/260x190/personId.png`;
+
 export const todaysDate = new Date().toLocaleDateString("en-US", {
   weekday: "long",
   year: "numeric",

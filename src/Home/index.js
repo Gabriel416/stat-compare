@@ -38,13 +38,18 @@ class Home extends Component {
       scoreboardData,
       isLoading,
       searchValue,
+      searchResults,
       setSearchValue,
       getData
     } = this.props;
 
     return (
       <div>
-        <Searchbar searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Searchbar
+          searchValue={searchValue}
+          searchResults={searchResults}
+          setSearchValue={setSearchValue}
+        />
         <Scoreboard scoreboardData={scoreboardData} teams={teams} />
       </div>
     );
@@ -56,6 +61,7 @@ const mapStateToProps = state => ({
   teams: state.teams.teamData,
   scoreboardData: state.scoreboard,
   searchValue: state.searchbar.searchValue,
+  searchResults: state.searchbar.searchResults,
   isLoading: state.http.isLoading
 });
 

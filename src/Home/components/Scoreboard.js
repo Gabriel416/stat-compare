@@ -46,11 +46,9 @@ const Scoreboard = ({ scoreboardData, teams }) => {
     const { scoreBoardGames } = scoreboardData;
 
     return scoreBoardGames.map(game => {
-      console.log(game.hTeam.teamId, "game");
       const homeTeam = teams.find(team => team.teamId === game.hTeam.teamId);
       const awayTeam = teams.find(team => team.teamId === game.vTeam.teamId);
-      console.log("homeTeam :", homeTeam);
-      console.log(game, "GAMES");
+
       return (
         <div
           className={classnames("col-sm-12 col-md-12 col-lg-6")}
