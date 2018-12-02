@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
-import { setSearchValue } from "../modules/searchbar";
+import {
+  setSearchValue,
+  setSelectedSearchResult,
+  resetSearchbar
+} from "../modules/searchbar";
 import { getData } from "../modules/http";
 import { fetchPlayersData } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
@@ -40,7 +44,9 @@ class Home extends Component {
       searchValue,
       searchResults,
       setSearchValue,
-      getData
+      getData,
+      setSelectedSearchResult,
+      resetSearchbar
     } = this.props;
 
     return (
@@ -49,6 +55,8 @@ class Home extends Component {
           searchValue={searchValue}
           searchResults={searchResults}
           setSearchValue={setSearchValue}
+          setSelectedSearchResult={setSelectedSearchResult}
+          resetSearchbar={resetSearchbar}
         />
         <Scoreboard scoreboardData={scoreboardData} teams={teams} />
       </div>
@@ -72,7 +80,9 @@ const mapDispatchToProps = dispatch =>
       getData,
       fetchPlayersData,
       fetchTeamsData,
-      fetchScoreboardData
+      fetchScoreboardData,
+      setSelectedSearchResult,
+      resetSearchbar
     },
     dispatch
   );

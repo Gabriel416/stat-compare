@@ -1,9 +1,12 @@
 const SEARCH_INPUT_CHANGE = "SEARCH_INPUT_CHANGE";
 const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS";
+const SET_SELECTED_SEARCH_RESULT = "SET_SELECTED_SEARCH_RESULT";
+const RESET_SEARCHBAR = "RESET_SEARCHBAR";
 
 const initialState = {
   searchValue: "",
-  searchResults: null
+  searchResults: null,
+  selectedSearchResult: null
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +21,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         searchResults: action.payload
+      };
+    }
+    case SET_SELECTED_SEARCH_RESULT: {
+      return {
+        ...state,
+        selectedSearchResult: action.payload
+      };
+    }
+    case RESET_SEARCHBAR: {
+      return {
+        ...state,
+        searchValue: initialState.searchValue,
+        searchResults: initialState.searchResults,
+        selectedSearchResult: initialState.selectedSearchResult
       };
     }
     default:
@@ -71,5 +88,21 @@ export const setSearchResults = () => {
         payload: [...matchedTeams, ...matchedPlayers]
       });
     }
+  };
+};
+
+export const setSelectedSearchResult = searchResult => {
+  return dispatch => {
+    dispatch({
+      type: SET_SELECTED_SEARCH_RESULT,
+      payload: searchResult
+    });
+    dispatch(resetSearchbar());
+  };
+};
+
+export const resetSearchbar = () => {
+  return {
+    type: RESET_SEARCHBAR
   };
 };
