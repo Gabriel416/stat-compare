@@ -1,3 +1,5 @@
+import { push } from "connected-react-router";
+
 const SEARCH_INPUT_CHANGE = "SEARCH_INPUT_CHANGE";
 const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS";
 const SET_SELECTED_SEARCH_RESULT = "SET_SELECTED_SEARCH_RESULT";
@@ -33,8 +35,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         searchValue: initialState.searchValue,
-        searchResults: initialState.searchResults,
-        selectedSearchResult: initialState.selectedSearchResult
+        searchResults: initialState.searchResults
       };
     }
     default:
@@ -97,7 +98,13 @@ export const setSelectedSearchResult = searchResult => {
       type: SET_SELECTED_SEARCH_RESULT,
       payload: searchResult
     });
+    console.log(searchResult, "search result");
     dispatch(resetSearchbar());
+    if (searchResult.personId) {
+      dispatch(push(`/player/${searchResult.personId}`));
+    } else {
+      dispatch(push(`/team/${searchResult.teamId}`));
+    }
   };
 };
 

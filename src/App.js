@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Home from "./Home";
+import Routes from "./Routes";
 import logo from "./logo.svg";
 import classnames from "classnames";
 import "./App.css";
@@ -26,7 +26,7 @@ class App extends Component {
             Learn React
           </a>
         </header> */}
-        <Home />
+        {Routes}
       </div>
     );
   }

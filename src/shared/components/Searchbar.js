@@ -8,8 +8,7 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cursor: 0,
-      scrollPosition: 0
+      cursor: 0
     };
   }
 
@@ -21,7 +20,7 @@ class SearchBar extends Component {
       setSelectedSearchResult,
       resetSearchbar
     } = this.props;
-    const { cursor, scrollPosition } = this.state;
+    const { cursor } = this.state;
 
     const renderSuggestions = () => {
       if (searchValue && !searchResults.length) {
@@ -57,8 +56,9 @@ class SearchBar extends Component {
         return (
           <div
             key={i}
+            id={i}
             className={suggestionCardClasses}
-            onClick={() => setSelectedSearchResult(result)}
+            onMouseDown={() => setSelectedSearchResult(result)}
           >
             <img
               src={suggestionContent.media}
@@ -88,7 +88,10 @@ class SearchBar extends Component {
       } else if (e.keyCode === 13) {
         /*If the ENTER key is pressed, prevent the form from being submitted,*/
         e.preventDefault();
-        // setSelectedSearchResult();
+        let selectedIndex = document
+          .querySelector(".autocomplete-active")
+          .getAttribute("id");
+        setSelectedSearchResult(searchResults[selectedIndex]);
       } else {
         // reset counter if any other keys are entered
         this.setState({ cursor: 0 });
