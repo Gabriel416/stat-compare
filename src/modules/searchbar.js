@@ -1,4 +1,6 @@
 import { push } from "connected-react-router";
+import { getData } from "./http";
+import { playerStatsUrl } from "../config";
 
 const SEARCH_INPUT_CHANGE = "SEARCH_INPUT_CHANGE";
 const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS";
@@ -93,16 +95,25 @@ export const setSearchResults = () => {
 };
 
 export const setSelectedSearchResult = searchResult => {
-  return dispatch => {
-    dispatch({
-      type: SET_SELECTED_SEARCH_RESULT,
-      payload: searchResult
-    });
-    console.log(searchResult, "search result");
+  return async dispatch => {
     dispatch(resetSearchbar());
     if (searchResult.personId) {
+      const playerStats = await dispatch(
+        getData(playerStatsUrl.replace("personId", searchResult.personId))
+      );
+      dispatch({
+        type: SET_SELECTED_SEARCH_RESULT,
+        payload: {
+          ...searchResult,
+          playerStats: playerStats.league.standard.stats
+        }
+      });
       dispatch(push(`/player/${searchResult.personId}`));
     } else {
+      dispatch({
+        type: SET_SELECTED_SEARCH_RESULT,
+        payload: searchResult
+      });
       dispatch(push(`/team/${searchResult.teamId}`));
     }
   };

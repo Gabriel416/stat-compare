@@ -4,6 +4,7 @@ const date = (new Date().getDate() < 10 ? "0" : "") + new Date().getDate();
 
 export const proxy = "https://stat-compare-proxy.herokuapp.com/";
 export const playersUrl = `https://data.nba.net/10s/prod/v1/${year}/players.json`;
+export const playerStatsUrl = `http://data.nba.net/prod/v1/${year}/players/personId_profile.json`;
 export const teamsUrl = `https://data.nba.net/10s/prod/v1/${year}/teams.json`;
 export const scoreBoardUrl = `https://data.nba.net/prod/v1/${year}${month}${date}/scoreboard.json`;
 export const todayUrl = "https://data.nba.net/10s/prod/v1/today.json";

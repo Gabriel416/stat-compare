@@ -15,38 +15,6 @@ export default (state = initialState, action) => {
         isLoading: action.payload
       };
     }
-    // case ASSETS_FETCHED: {
-    //   return {
-    //     ...state,
-    //     assetsData: action.payload.data,
-    //     pagination: _.omit(action.payload, ["data"]),
-    //     isFetchingAssets: false
-    //   };
-    // }
-    // case IS_DELETING_ASSET: {
-    //   return {
-    //     ...state,
-    //     isDeletingAsset: true
-    //   };
-    // }
-    // case DELETED_ASSET: {
-    //   return {
-    //     ...state,
-    //     isDeletingAsset: false
-    //   };
-    // }
-    // case FILTER_CLICKED: {
-    //   return {
-    //     ...state,
-    //     asset: action.payload
-    //   };
-    // }
-    // case SEARCH_INPUT_CHANGE: {
-    //   return {
-    //     ...state,
-    //     searchValue: action.payload
-    //   };
-    // }
     default:
       return state;
   }

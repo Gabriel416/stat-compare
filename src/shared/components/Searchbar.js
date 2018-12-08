@@ -18,7 +18,8 @@ class SearchBar extends Component {
       searchResults,
       setSearchValue,
       setSelectedSearchResult,
-      resetSearchbar
+      resetSearchbar,
+      placeholder
     } = this.props;
     const { cursor } = this.state;
 
@@ -106,7 +107,7 @@ class SearchBar extends Component {
             <input
               name="searchBar"
               type="text"
-              placeholder="Search for team or player"
+              placeholder={placeholder || "Search for team or player"}
               className="form-control"
               value={searchValue}
               onChange={e => setSearchValue(e.target.value)}
