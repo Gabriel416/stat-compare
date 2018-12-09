@@ -21,6 +21,7 @@ export default (state = initialState, action) => {
 };
 
 export const getData = url => {
+  console.log(url, "http hit");
   return dispatch => {
     dispatch({ type: IS_LOADING, payload: true });
     return axios

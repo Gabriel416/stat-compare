@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import moment from "moment";
+import { Link } from "react-router-dom";
 import { todaysDate, teamStyles } from "../../config";
 import "./scoreboard.css";
 
@@ -54,37 +54,42 @@ const Scoreboard = ({ scoreboardData, teams }) => {
           className={classnames("col-sm-12 col-md-12 col-lg-6")}
           key={game.gameId}
         >
-          <div className="col-sm-12 game-card-wrapper">
-            <div className={classnames("home-team-section")}>
-              <img
-                src={teamStyles[homeTeam.urlName].logo}
-                alt="home team logo"
-              />
-              <div>
-                <span>{homeTeam.nickname}</span>
-                <br />
-                <span>{`${game.hTeam.win}-${game.hTeam.loss}`}</span>
+          <Link to={`/game/${game.gameId}`} className="game-link">
+            <div className="col-sm-12 game-card-wrapper">
+              <div className={classnames("home-team-section")}>
+                <img
+                  src={teamStyles[homeTeam.urlName].logo}
+                  alt="home team logo"
+                />
+                <div>
+                  <span>{homeTeam.nickname}</span>
+                  <br />
+                  <span>{`${game.hTeam.win}-${game.hTeam.loss}`}</span>
+                </div>
               </div>
-            </div>
 
-            <div className={classnames("game-status")}>
-              <span className="home-score">{game.hTeam.score || 0}</span>
-              {calculateGameStatus(game)}
-              <span className="away-score">{game.vTeam.score || 0}</span>
-            </div>
-
-            <div className={classnames("away-team-section")}>
-              <img
-                src={teamStyles[awayTeam.urlName].logo}
-                alt="away team logo"
-              />
-              <div>
-                <span>{awayTeam.nickname}</span>
-                <br />
-                <span>{`${game.vTeam.win}-${game.vTeam.loss}`}</span>
+              <div className={classnames("game-status")}>
+                <span className="home-score">{game.hTeam.score || 0}</span>
+                {calculateGameStatus(game)}
+                <span className="away-score">{game.vTeam.score || 0}</span>
               </div>
+
+              <div className={classnames("away-team-section")}>
+                <img
+                  src={teamStyles[awayTeam.urlName].logo}
+                  alt="away team logo"
+                />
+                <div>
+                  <span>{awayTeam.nickname}</span>
+                  <br />
+                  <span>{`${game.vTeam.win}-${game.vTeam.loss}`}</span>
+                </div>
+              </div>
+              <p className="col-sm-12 game-nugget">
+                {game.nugget ? game.nugget.text : ""}
+              </p>
             </div>
-          </div>
+          </Link>
         </div>
       );
     });

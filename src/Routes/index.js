@@ -10,12 +10,18 @@ const Player = Loadable({
   loading: Loading
 });
 
+const Game = Loadable({
+  loader: () => import("../Game"),
+  loading: Loading
+});
+
 const Routes = (
   <div>
     <Searchbar />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/player/:id" component={Player} />
+      <Route path="/game/:id" component={Game} />
       <Route component={Home} />
     </Switch>
   </div>

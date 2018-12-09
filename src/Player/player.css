@@ -86,7 +86,7 @@
 
 @media screen and (max-width: 480px) {
   .player-headshot-wrapper {
-    height: 200px;
+    height: 200px !important;
     display: flex;
     justify-content: center;
     align-items: center;

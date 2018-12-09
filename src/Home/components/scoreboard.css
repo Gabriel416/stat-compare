@@ -46,6 +46,17 @@
   margin-left: 20px;
 }
 
+.game-nugget {
+  font-size: 14px;
+}
+
+.game-link,
+.game-link:hover {
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1300px) {
   .game-status {
     top: 37%;

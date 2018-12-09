@@ -29,7 +29,7 @@ class Home extends Component {
   }
 
   render() {
-    const { teams, scoreboardData, searchResults } = this.props;
+    const { teams, scoreboardData } = this.props;
 
     return (
       <div>

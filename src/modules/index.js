@@ -5,6 +5,7 @@ import searchbar from "./searchbar";
 import players from "./players";
 import teams from "./teams";
 import scoreboard from "./scoreboard";
+import game from "./game";
 
 export default history =>
   combineReducers({
@@ -13,5 +14,6 @@ export default history =>
     searchbar,
     players,
     teams,
-    scoreboard
+    scoreboard,
+    game
   });
