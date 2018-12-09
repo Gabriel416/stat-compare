@@ -117,6 +117,9 @@ class SearchBar extends Component {
         let selectedIndex = document
           .querySelector(".autocomplete-active")
           .getAttribute("id");
+        this.setState(prevState => ({
+          cursor: prevState.cursor + 1
+        }));
         onSubmit(searchResults[selectedIndex]);
       } else {
         // reset counter if any other keys are entered
