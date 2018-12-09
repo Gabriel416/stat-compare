@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
-import {
-  setSearchValue,
-  setSelectedSearchResult,
-  resetSearchbar
-} from "../modules/searchbar";
-import { getData } from "../modules/http";
-import { fetchPlayersData } from "../modules/players";
+import { fetchPlayersData, resetPlayerComparison } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
 import "./player.css";
 
-import Searchbar from "../shared/components/Searchbar";
 import Profile from "./components/Profile";
 
 class Player extends Component {
@@ -28,28 +21,18 @@ class Player extends Component {
   render() {
     const {
       teams,
-      players,
-      searchValue,
-      searchResults,
-      setSearchValue,
-      setSelectedSearchResult,
-      resetSearchbar,
-      selectedSearchResut
+      playerToCompare,
+      selectedSearchResut,
+      resetPlayerComparison
     } = this.props;
 
     return (
       <div>
-        <Searchbar
-          searchValue={searchValue}
-          searchResults={searchResults}
-          setSearchValue={setSearchValue}
-          setSelectedSearchResult={setSelectedSearchResult}
-          resetSearchbar={resetSearchbar}
-        />
         <Profile
           selectedSearchResut={selectedSearchResut}
           teams={teams}
-          players={players}
+          playerToCompare={playerToCompare}
+          resetPlayerComparison={resetPlayerComparison}
         />
       </div>
     );
@@ -58,23 +41,17 @@ class Player extends Component {
 
 const mapStateToProps = state => ({
   players: state.players.playerData,
+  playerToCompare: state.players.playerToCompare,
   teams: state.teams.teamData,
-  scoreboardData: state.scoreboard,
-  searchValue: state.searchbar.searchValue,
-  searchResults: state.searchbar.searchResults,
-  selectedSearchResut: state.searchbar.selectedSearchResult,
-  isLoading: state.http.isLoading
+  selectedSearchResut: state.searchbar.selectedSearchResult
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setSearchValue,
-      getData,
       fetchPlayersData,
       fetchTeamsData,
-      setSelectedSearchResult,
-      resetSearchbar
+      resetPlayerComparison
     },
     dispatch
   );

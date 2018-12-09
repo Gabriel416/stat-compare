@@ -1,7 +1,16 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { bindActionCreators, compose } from "redux";
+import { connect } from "react-redux";
+import {
+  setSearchValue,
+  setSelectedSearchResult,
+  setComparedPlayer,
+  resetSearchbar
+} from "../../../modules/searchbar";
 import classnames from "classnames";
-import { teamStyles, playerHeadShot } from "../../config";
-import avatar from "../../images/avatar.png";
+import { teamStyles, playerHeadShot } from "../../../config";
+import avatar from "../../../images/avatar.png";
 import "./searchbar.css";
 
 class SearchBar extends Component {
@@ -15,15 +24,31 @@ class SearchBar extends Component {
   render() {
     const {
       searchValue,
+      playerSearchValue,
       searchResults,
+      playerSearchResults,
       setSearchValue,
       setSelectedSearchResult,
+      setComparedPlayer,
       resetSearchbar,
-      placeholder
+      placeholder,
+      playerCompare
     } = this.props;
     const { cursor } = this.state;
 
-    const renderSuggestions = () => {
+    const onSubmit = result => {
+      playerCompare
+        ? setComparedPlayer(result)
+        : setSelectedSearchResult(result);
+    };
+
+    const onChange = searchValue => {
+      playerCompare
+        ? setSearchValue(searchValue, "player")
+        : setSearchValue(searchValue);
+    };
+
+    const renderSuggestions = searchResults => {
       if (searchValue && !searchResults.length) {
         return <div className="suggestion-card">No results found</div>;
       }
@@ -59,7 +84,7 @@ class SearchBar extends Component {
             key={i}
             id={i}
             className={suggestionCardClasses}
-            onMouseDown={() => setSelectedSearchResult(result)}
+            onMouseDown={() => onSubmit(result)}
           >
             <img
               src={suggestionContent.media}
@@ -92,7 +117,7 @@ class SearchBar extends Component {
         let selectedIndex = document
           .querySelector(".autocomplete-active")
           .getAttribute("id");
-        setSelectedSearchResult(searchResults[selectedIndex]);
+        onSubmit(searchResults[selectedIndex]);
       } else {
         // reset counter if any other keys are entered
         this.setState({ cursor: 0 });
@@ -101,7 +126,12 @@ class SearchBar extends Component {
 
     return (
       <div className="searchbar-wrapper">
-        <form autoComplete="off" className="input-group">
+        {!playerCompare && <Link to="/">Home</Link>}
+        <form
+          autoComplete="off"
+          className="input-group"
+          style={{ width: `${playerCompare ? "100%" : "90%"}` }}
+        >
           <div className="searchbar-content">
             <label htmlFor="searchBar" className="hidden" />
             <input
@@ -109,13 +139,17 @@ class SearchBar extends Component {
               type="text"
               placeholder={placeholder || "Search for team or player"}
               className="form-control"
-              value={searchValue}
-              onChange={e => setSearchValue(e.target.value)}
+              value={playerCompare ? playerSearchValue : searchValue}
+              onChange={e => onChange(e.target.value)}
               onKeyDown={e => handleKeyPresses(e)}
               onBlur={() => resetSearchbar()}
               aria-label="search bar"
             />
-            <div className="autocomplete-items">{renderSuggestions()}</div>
+            <div className="autocomplete-items">
+              {renderSuggestions(
+                playerCompare ? playerSearchResults : searchResults
+              )}
+            </div>
           </div>
         </form>
       </div>
@@ -123,4 +157,28 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({
+  searchValue: state.searchbar.searchValue,
+  playerSearchValue: state.searchbar.playerSearchValue,
+  searchResults: state.searchbar.searchResults,
+  playerSearchResults: state.searchbar.playerSearchResults,
+  selectedSearchResut: state.searchbar.selectedSearchResult
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      setSearchValue,
+      setSelectedSearchResult,
+      setComparedPlayer,
+      resetSearchbar
+    },
+    dispatch
+  );
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(SearchBar);

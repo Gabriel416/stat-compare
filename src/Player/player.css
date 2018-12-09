@@ -1,5 +1,6 @@
 .player-headshot {
   background-color: #fff;
+  /* padding: 10px; */
   -webkit-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
   -moz-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
   box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
@@ -12,6 +13,7 @@
 }
 
 .player-headshot-wrapper {
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,6 +42,7 @@
 
 .player-content img {
   width: 300px;
+  margin: 0 auto;
 }
 
 .player-content h1 {
@@ -69,7 +72,27 @@
   font-size: 20px;
 }
 
+.player-comparison-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.player-compare-search-wrapper {
+  margin-top: 15px;
+}
+
 @media screen and (max-width: 480px) {
+  .player-headshot-wrapper {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
   .player-headshot-wrapper h1,
   .player-stat-wrapper h1 {
     font-size: 2rem;
@@ -80,6 +103,6 @@
   }
 
   .player-content img {
-    width: 250px;
+    width: 200px;
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import nbaLogo from "../../images/nba-logo.png";
+import nbaLogo from "../../../images/nba-logo.png";
 import "./loading.css";
 
 const Loading = () => (

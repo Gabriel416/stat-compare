@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
-import {
-  setSearchValue,
-  setSelectedSearchResult,
-  resetSearchbar
-} from "../modules/searchbar";
-import { getData } from "../modules/http";
 import { fetchPlayersData } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
 import { fetchScoreboardData } from "../modules/scoreboard";
 
-import Searchbar from "../shared/components/Searchbar";
 import Scoreboard from "./components/Scoreboard";
 
 class Home extends Component {
@@ -36,28 +29,10 @@ class Home extends Component {
   }
 
   render() {
-    const {
-      players,
-      teams,
-      scoreboardData,
-      isLoading,
-      searchValue,
-      searchResults,
-      setSearchValue,
-      getData,
-      setSelectedSearchResult,
-      resetSearchbar
-    } = this.props;
+    const { teams, scoreboardData, searchResults } = this.props;
 
     return (
       <div>
-        <Searchbar
-          searchValue={searchValue}
-          searchResults={searchResults}
-          setSearchValue={setSearchValue}
-          setSelectedSearchResult={setSelectedSearchResult}
-          resetSearchbar={resetSearchbar}
-        />
         <Scoreboard scoreboardData={scoreboardData} teams={teams} />
       </div>
     );
@@ -65,24 +40,16 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  players: state.players.playerData,
   teams: state.teams.teamData,
-  scoreboardData: state.scoreboard,
-  searchValue: state.searchbar.searchValue,
-  searchResults: state.searchbar.searchResults,
-  isLoading: state.http.isLoading
+  scoreboardData: state.scoreboard
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setSearchValue,
-      getData,
       fetchPlayersData,
       fetchTeamsData,
-      fetchScoreboardData,
-      setSelectedSearchResult,
-      resetSearchbar
+      fetchScoreboardData
     },
     dispatch
   );
