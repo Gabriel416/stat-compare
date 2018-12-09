@@ -27,7 +27,7 @@ class Player extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="container-fluid">
         <Profile
           selectedSearchResut={selectedSearchResut}
           teams={teams}

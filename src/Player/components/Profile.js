@@ -32,32 +32,36 @@ const Profile = ({
     const { info, stats } = player;
 
     return (
-      <div
-        className={classnames(
-          "player-headshot col-sm-12",
-          playerToCompare ? "col-md-6" : "col-md-12"
-        )}
-      >
-        <div className="col-sm-12">
-          <div className="row">
-            <div className="player-headshot-wrapper col-sm-12 col-md-6">
-              <PlayerHeadshot player={player} />
+      <div className="player-headshot col-sm-12">
+        <div className="row">
+          <div
+            className={classnames(
+              "player-headshot-wrapper col-sm-12",
+              playerToCompare ? "col-md-12" : "col-md-6"
+            )}
+            style={{ height: `${playerToCompare ? "250px" : "500px"}` }}
+          >
+            <PlayerHeadshot player={player} />
+          </div>
+          <div
+            className={classnames(
+              "player-stat-wrapper col-sm-12",
+              playerToCompare ? "col-md-12" : "col-md-6"
+            )}
+          >
+            <PlayerInfo info={info} player={player} />
+            <div className="player-stat-box">
+              <Stats
+                latestStats={stats.latest}
+                careerStats={stats.careerSummary}
+              />
             </div>
-            <div className="player-stat-wrapper col-sm-12 col-md-6">
-              <PlayerInfo info={info} player={player} />
-              <div className="player-stat-box">
-                <Stats
-                  latestStats={stats.latest}
-                  careerStats={stats.careerSummary}
-                />
-              </div>
-              {!comparedPlayer && (
-                <ComparePlayer
-                  player={player}
-                  resetPlayerComparison={resetPlayerComparison}
-                />
-              )}
-            </div>
+            {!comparedPlayer && (
+              <ComparePlayer
+                player={player}
+                resetPlayerComparison={resetPlayerComparison}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -65,9 +69,13 @@ const Profile = ({
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="row">
+      <div
+        className={classnames("col-sm-12", playerToCompare ? "col-md-6" : "")}
+      >
         {renderPlayerData(selectedSearchResut)}
+      </div>
+      <div className="col-sm-12 col-md-6">
         {playerToCompare && renderPlayerData(playerToCompare, true)}
       </div>
     </div>

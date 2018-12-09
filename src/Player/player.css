@@ -1,6 +1,7 @@
 .player-headshot {
   background-color: #fff;
-  /* padding: 10px; */
+  margin-bottom: 30px;
+  padding: 10px;
   -webkit-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
   -moz-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
   box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
@@ -8,17 +9,13 @@
   transition: 0.4s ease;
 }
 
-.player-headshot:hover {
-  transform: translateY(-5px);
-}
-
 .player-headshot-wrapper {
-  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .player-headshot-wrapper .player-background {
@@ -47,6 +44,10 @@
 
 .player-content h1 {
   letter-spacing: 2px;
+}
+
+.player-stat-wrapper {
+  margin: auto 0;
 }
 
 .stat-wrapper {
