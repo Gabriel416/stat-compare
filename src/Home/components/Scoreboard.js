@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { todaysDate, teamStyles } from "../../config";
 import "./scoreboard.css";
 
-const Scoreboard = ({ scoreboardData, teams }) => {
+const Scoreboard = ({ scoreboardData, teams, fetchGameData }) => {
   const { scoreBoardGames, numberOfGames } = scoreboardData;
 
   const calculateGameStatus = game => {
@@ -54,7 +54,11 @@ const Scoreboard = ({ scoreboardData, teams }) => {
           className={classnames("col-sm-12 col-md-12 col-lg-6")}
           key={game.gameId}
         >
-          <Link to={`/game/${game.gameId}`} className="game-link">
+          <Link
+            to={`/game/${game.gameId}`}
+            className="game-link"
+            onClick={() => fetchGameData(game.gameId)}
+          >
             <div className="col-sm-12 game-card-wrapper">
               <div className={classnames("home-team-section")}>
                 <img

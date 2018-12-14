@@ -13,7 +13,7 @@ class Game extends Component {
   componentDidMount() {
     // const { match } = this.props;
     console.log(this.props, "props");
-    fetchGameData(this.props.match.params.id);
+    // fetchGameData(this.props.match.params.id);
   }
 
   render() {
@@ -32,7 +32,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetchGameData
+      //   fetchGameData
     },
     dispatch
   );
