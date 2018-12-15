@@ -22,10 +22,17 @@ export default (state = initialState, action) => {
   }
 };
 
-export const setGameData = gameData => {
-  return {
-    type: SET_GAME_DATA,
-    payload: gameData
+export const fetchGameData = gameId => {
+  console.log(boxScoreUrl.replace("gameId", gameId), "HIT");
+  return async dispatch => {
+    const gameData = await dispatch(
+      getData(boxScoreUrl.replace("gameId", gameId))
+    );
+    console.log(gameData, "HERE hello");
+    dispatch({
+      type: SET_GAME_DATA,
+      payload: gameData
+    });
   };
 };
 

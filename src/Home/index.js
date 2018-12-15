@@ -3,7 +3,7 @@ import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
 import { fetchPlayersData } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
-import { fetchScoreboardData, fetchGameData } from "../modules/scoreboard";
+import { fetchScoreboardData } from "../modules/scoreboard";
 
 import Scoreboard from "./components/Scoreboard";
 
@@ -29,15 +29,11 @@ class Home extends Component {
   }
 
   render() {
-    const { teams, scoreboardData, fetchGameData } = this.props;
+    const { teams, scoreboardData } = this.props;
 
     return (
       <div>
-        <Scoreboard
-          scoreboardData={scoreboardData}
-          teams={teams}
-          fetchGameData={fetchGameData}
-        />
+        <Scoreboard scoreboardData={scoreboardData} teams={teams} />
       </div>
     );
   }
@@ -53,8 +49,7 @@ const mapDispatchToProps = dispatch =>
     {
       fetchPlayersData,
       fetchTeamsData,
-      fetchScoreboardData,
-      fetchGameData
+      fetchScoreboardData
     },
     dispatch
   );

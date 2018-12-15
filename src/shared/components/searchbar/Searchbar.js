@@ -129,7 +129,11 @@ class SearchBar extends Component {
 
     return (
       <div className="searchbar-wrapper">
-        {!playerCompare && <Link to="/">Home</Link>}
+        {!playerCompare && (
+          <Link to="/" className="btn btn-primary">
+            Home
+          </Link>
+        )}
         <form
           autoComplete="off"
           className="input-group"

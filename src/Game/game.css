@@ -1,0 +1,118 @@
+.game-wrapper {
+  position: relative;
+  margin: 15px 0px;
+  -webkit-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
+  -moz-box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
+  box-shadow: 1px 1px 20px 0px rgba(173, 168, 173, 0.8);
+  padding: 30px 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  transition: 0.4s ease;
+}
+
+.game-header-wrapper,
+.game-details-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.game-header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-team-name {
+  position: relative;
+  width: 150px;
+  text-align: center;
+}
+
+.game-team-tri {
+  color: #dfdfdf;
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: 5px;
+}
+
+.game-team-score {
+  font-size: 70px;
+  letter-spacing: 3px;
+}
+
+.game-header-status {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 18px;
+  z-index: 2;
+}
+
+.game-details-content img {
+  width: 150px;
+  height: 150px;
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 700px) {
+  .game-team-tri {
+    font-size: 35px;
+  }
+
+  .game-team-score {
+    font-size: 40px;
+    letter-spacing: 2px;
+  }
+
+  .game-header-status {
+    font-size: 14px;
+  }
+
+  .overlay-text {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .game-team-name {
+    width: 100px;
+    margin: 0 5px;
+  }
+
+  .game-team-score {
+    font-size: 30px;
+    letter-spacing: 0px;
+  }
+
+  .game-header-content {
+    margin: 0px 10px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .game-team-name {
+    width: 70px;
+  }
+
+  .game-team-tri {
+    font-size: 30px;
+  }
+
+  .game-header-content {
+    margin: 0px 5px;
+  }
+
+  .overlay-text {
+    font-size: 12px;
+  }
+}

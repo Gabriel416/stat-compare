@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { teamStyles, playerHeadShot } from "../../config";
+import { teamStyles } from "../../config";
 
 import SearchBar from "../../shared/components/searchbar/Searchbar";
 
