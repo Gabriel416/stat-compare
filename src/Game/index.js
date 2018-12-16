@@ -29,12 +29,17 @@ class Game extends Component {
   }
 
   render() {
-    const { basicGameData, previousMatchup } = this.props.gameData;
-    const { teams } = this.props;
+    const { gameData, teams } = this.props;
     return (
       <div className="game-wrapper">
-        <GameHeader basicGameData={basicGameData} teams={teams} />
-        <GameDetails basicGameData={basicGameData} teams={teams} />
+        {gameData && teams ? (
+          <div>
+            <GameHeader basicGameData={gameData.basicGameData} teams={teams} />
+            <GameDetails basicGameData={gameData.basicGameData} teams={teams} />
+          </div>
+        ) : (
+          "Loading..."
+        )}
       </div>
     );
   }

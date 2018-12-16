@@ -11,8 +11,50 @@ const GameDetails = ({ basicGameData, teams }) => {
     );
   };
 
+  const renderQuarterScore = (homeScores, awayScores) => {
+    if (!homeScores.length && awayScores.length) {
+      homeScores = [{ score: 0 }, { score: 0 }, { score: 0 }, { score: 0 }];
+      awayScores = [{ score: 0 }, { score: 0 }, { score: 0 }, { score: 0 }];
+    }
+
+    const totalHomeScore = homeScores.reduce((acc, quarter) => {
+      return (acc += Number(quarter.score));
+    }, 0);
+
+    const totalAwayScore = awayScores.reduce((acc, quarter) => {
+      return (acc += Number(quarter.score));
+    }, 0);
+
+    const quarterScores = homeScores.map((homeScore, i) => {
+      return (
+        <div className="score-breakdown-section">
+          <p>{homeScore.score}</p>
+          <p>{`Q${i + 1}`}</p>
+          <p>{awayScores[i].score}</p>
+        </div>
+      );
+    });
+
+    return (
+      <div>
+        {quarterScores}
+        <div className="score-breakdown-section">
+          <p>{totalHomeScore}</p>
+          <p>TOT</p>
+          <p>{totalAwayScore}</p>
+        </div>
+      </div>
+    );
+  };
+
   const renderScoreOverview = () => {
-    return <p>hello</p>;
+    const homeTeamScore = basicGameData.hTeam.linescore;
+    const awayTeamScore = basicGameData.vTeam.linescore;
+    return (
+      <div className="score-overview-wrapper">
+        {renderQuarterScore(homeTeamScore, awayTeamScore)}
+      </div>
+    );
   };
 
   return (
