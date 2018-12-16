@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
-import { fetchGameData } from "../modules/game";
+import { fetchGameData, changeStatView } from "../modules/game";
 import { fetchPlayersData } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
 
 import GameHeader from "./components/GameHeader";
 import GameDetails from "./components/GameDetails";
+import DynamicGameStats from "./components/DynamicGameStats";
 
 import "./game.css";
 
@@ -29,13 +30,19 @@ class Game extends Component {
   }
 
   render() {
-    const { gameData, teams } = this.props;
+    const { gameData, teams, statView, changeStatView } = this.props;
     return (
       <div className="game-wrapper">
         {gameData && teams ? (
           <div>
             <GameHeader basicGameData={gameData.basicGameData} teams={teams} />
             <GameDetails basicGameData={gameData.basicGameData} teams={teams} />
+            <DynamicGameStats
+              basicGameData={gameData.basicGameData}
+              teams={teams}
+              statView={statView}
+              changeStatView={changeStatView}
+            />
           </div>
         ) : (
           "Loading..."
@@ -48,7 +55,8 @@ class Game extends Component {
 const mapStateToProps = state => ({
   gameData: state.game.gameData,
   teams: state.teams.teamData,
-  players: state.players.playerData
+  players: state.players.playerData,
+  statView: state.game.statView
 });
 
 const mapDispatchToProps = dispatch =>
@@ -56,7 +64,8 @@ const mapDispatchToProps = dispatch =>
     {
       fetchGameData,
       fetchPlayersData,
-      fetchTeamsData
+      fetchTeamsData,
+      changeStatView
     },
     dispatch
   );

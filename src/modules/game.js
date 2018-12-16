@@ -2,11 +2,11 @@ import { getData } from "./http";
 import { boxScoreUrl } from "../config";
 
 const SET_GAME_DATA = "SET_GAME_DATA";
-// const SET_COMPARED_PLAYER = "SET_COMPARED_PLAYER";
-// const RESET_COMPARED_PLAYER = "RESET_COMPARED_PLAYER";
+const SET_STATS_TO_VIEW = "SET_STATS_TO_VIEW";
 
 const initialState = {
-  gameData: null
+  gameData: null,
+  statView: "matchUp"
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +15,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         gameData: action.payload
+      };
+    }
+    case SET_STATS_TO_VIEW: {
+      return {
+        ...state,
+        statView: action.payload
       };
     }
     default:
@@ -36,15 +42,9 @@ export const fetchGameData = gameId => {
   };
 };
 
-// export const playerToCompare = player => {
-//   return {
-//     type: SET_COMPARED_PLAYER,
-//     payload: player
-//   };
-// };
-
-// export const resetPlayerComparison = () => {
-//   return {
-//     type: RESET_COMPARED_PLAYER
-//   };
-// };
+export const changeStatView = statsToView => {
+  return {
+    type: SET_STATS_TO_VIEW,
+    payload: statsToView
+  };
+};
