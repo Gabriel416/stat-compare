@@ -12,7 +12,7 @@ const GameDetails = ({ basicGameData, teams }) => {
   };
 
   const renderQuarterScore = (homeScores, awayScores) => {
-    if (!homeScores.length && awayScores.length) {
+    if (!homeScores.length && !awayScores.length) {
       homeScores = [{ score: 0 }, { score: 0 }, { score: 0 }, { score: 0 }];
       awayScores = [{ score: 0 }, { score: 0 }, { score: 0 }, { score: 0 }];
     }
@@ -27,7 +27,7 @@ const GameDetails = ({ basicGameData, teams }) => {
 
     const quarterScores = homeScores.map((homeScore, i) => {
       return (
-        <div className="score-breakdown-section">
+        <div className="score-breakdown-section" key={i}>
           <p>{homeScore.score}</p>
           <p>{`Q${i + 1}`}</p>
           <p>{awayScores[i].score}</p>
