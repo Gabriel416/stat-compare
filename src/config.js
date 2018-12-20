@@ -1,6 +1,7 @@
-const year = new Date().getFullYear();
-const month = new Date().getMonth() + 1;
-const date = (new Date().getDate() < 10 ? "0" : "") + new Date().getDate();
+export const year = new Date().getFullYear();
+export const month = new Date().getMonth() + 1;
+export const date =
+  (new Date().getDate() < 10 ? "0" : "") + new Date().getDate();
 
 export const proxy = "https://stat-compare-proxy.herokuapp.com/";
 export const playersUrl = `https://data.nba.net/10s/prod/v1/${year}/players.json`;

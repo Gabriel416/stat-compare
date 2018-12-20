@@ -3,15 +3,24 @@ import MatchUp from "./MatchUp";
 import BoxScore from "./BoxScore";
 
 const DynamicGameStats = ({
+  gameStats,
   basicGameData,
   teams,
+  players,
   statView,
-  changeStatView
+  changeStatView,
+  previousMatchup
 }) => {
   const renderStatView = () => {
     switch (statView) {
       case "matchUp":
-        return <MatchUp />;
+        return (
+          <MatchUp
+            gameStats={gameStats}
+            basicGameData={basicGameData}
+            previousMatchup={previousMatchup}
+          />
+        );
       case "boxScore":
         return <BoxScore />;
       default:

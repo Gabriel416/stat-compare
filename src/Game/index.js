@@ -30,7 +30,14 @@ class Game extends Component {
   }
 
   render() {
-    const { gameData, teams, statView, changeStatView } = this.props;
+    const {
+      gameData,
+      previousMatchup,
+      teams,
+      players,
+      statView,
+      changeStatView
+    } = this.props;
     return (
       <div className="game-wrapper">
         {gameData && teams ? (
@@ -38,10 +45,13 @@ class Game extends Component {
             <GameHeader basicGameData={gameData.basicGameData} teams={teams} />
             <GameDetails basicGameData={gameData.basicGameData} teams={teams} />
             <DynamicGameStats
+              gameStats={gameData.stats}
               basicGameData={gameData.basicGameData}
               teams={teams}
+              players={players}
               statView={statView}
               changeStatView={changeStatView}
+              previousMatchup={previousMatchup}
             />
           </div>
         ) : (
@@ -54,6 +64,7 @@ class Game extends Component {
 
 const mapStateToProps = state => ({
   gameData: state.game.gameData,
+  previousMatchup: state.game.previousMatchup,
   teams: state.teams.teamData,
   players: state.players.playerData,
   statView: state.game.statView

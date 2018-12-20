@@ -4,7 +4,7 @@ import moment from "moment";
 const PlayerInfo = ({ info, player }) => {
   return (
     <div>
-      <h1>{`#${info.jersey} | ${player.name}`}</h1>
+      <h1>{`#${info.jersey} | ${player.firstName} ${player.lastName}`}</h1>
       <p className="player-info">
         {`Pos. ${info.pos} / ${info.heightFeet}'${info.heightInches}" / ${
           info.weightPounds

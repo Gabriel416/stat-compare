@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { teamStyles, playerHeadShot } from "../../config";
+import findPlayer from "../../services/findPlayer";
 import "../player.css";
 
 import PlayerHeadshot from "./PlayerHeadshot";
@@ -10,24 +10,11 @@ import ComparePlayer from "./ComparePlayer";
 
 const Profile = ({
   selectedSearchResut,
-  teams,
   playerToCompare,
   resetPlayerComparison
 }) => {
   const renderPlayerData = (playerData, comparedPlayer) => {
-    let player = {};
-    player.team = teams.find(team => playerData.teamId === team.teamId);
-    player.team.logo = teamStyles[player.team.urlName].logo;
-    const mapObj = {
-      teamId: playerData.teamId,
-      personId: playerData.personId
-    };
-    player.photo = playerHeadShot.replace(
-      /teamId|personId/gi,
-      matched => mapObj[matched]
-    );
-    player.name = `${playerData.firstName} ${playerData.lastName}`;
-    player.info = playerData;
+    let player = findPlayer(playerData.personId);
     player.stats = playerData.playerStats;
     const { info, stats } = player;
 

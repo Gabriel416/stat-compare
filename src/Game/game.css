@@ -80,7 +80,8 @@
 .stat-options {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 40px;
+  margin: 40px auto 0px auto;
+  max-width: 900px;
 }
 
 .stat-options p {
@@ -92,6 +93,45 @@
 
 .stat-options .selected {
   color: #212529;
+}
+
+.team-leaders-container {
+  display: flex;
+  justify-content: center;
+}
+
+.stat-leaders-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.stat-leaders-wrapper p {
+  margin: 0 75px;
+}
+
+.stat-leaders {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-leaders img {
+  height: 60px;
+  border-radius: 50%;
+}
+
+.stat-categories {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.stat-leaders p {
+  display: flex;
+  margin: 0 5px;
 }
 
 @media screen and (max-width: 700px) {
