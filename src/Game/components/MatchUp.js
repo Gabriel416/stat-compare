@@ -16,9 +16,9 @@ const MatchUp = ({ gameStats, basicGameData, previousMatchup }) => {
     }
   };
   const stats = gameStats || arrangeData();
-  const renderTeamLeaders = (leaders, isAway, i) => {
+  const renderTeamLeaders = (leaders, isAway) => {
     console.log(stats, "stats");
-    return Object.keys(leaders).map(keyName => {
+    return Object.keys(leaders).map((keyName, i) => {
       const stats = leaders[keyName];
       const associatedPlayer = stats.players.length
         ? findPlayer(stats.players[0].personId)
@@ -38,7 +38,7 @@ const MatchUp = ({ gameStats, basicGameData, previousMatchup }) => {
               alt="Player picture"
             />
             <p>{associatedPlayer.lastName}</p>
-            <p>{stats.value}</p>
+            <p className="stat-matchup-value">{stats.value}</p>
           </div>
         </div>
       );

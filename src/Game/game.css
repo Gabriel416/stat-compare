@@ -134,6 +134,11 @@
   margin: 0 5px;
 }
 
+.stat-matchup-value {
+  font-size: 25px;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 700px) {
   .game-details-content img {
     width: 80px;
@@ -155,6 +160,14 @@
 
   .overlay-text {
     font-size: 15px;
+  }
+
+  .stat-categories p {
+    margin: 0 40px;
+  }
+
+  .stat-leaders img {
+    height: 40px;
   }
 }
 
@@ -189,5 +202,26 @@
 
   .overlay-text {
     font-size: 12px;
+  }
+
+  .stat-categories p {
+    margin: 0 15px;
+  }
+
+  .stat-leaders img {
+    height: 30px;
+  }
+
+  .stat-categories p {
+    font-size: 12px;
+  }
+
+  .stat-leaders p {
+    font-size: 14px;
+  }
+
+  .stat-matchup-value {
+    font-size: 16px !important;
+    font-weight: bold;
   }
 }
