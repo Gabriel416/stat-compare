@@ -13,7 +13,7 @@ const PlayerHeadshot = ({ player }) => {
       />
       <div className="player-content">
         <img
-          src={player.photo}
+          src={player.photo || avatar}
           alt="player headshot"
           onError={e => {
             e.target.src = avatar;

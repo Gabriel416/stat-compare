@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchGameData, changeStatView } from "../modules/game";
 import { fetchPlayersData } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
+import { setSelectedSearchResult } from "../modules/searchbar";
 
 import GameHeader from "./components/GameHeader";
 import GameDetails from "./components/GameDetails";
@@ -23,7 +24,7 @@ class Game extends Component {
       fetchPlayersData,
       match
     } = this.props;
-    console.log(this.props, "props");
+
     fetchGameData(match.params.id);
     fetchPlayersData();
     fetchTeamsData();
@@ -36,7 +37,8 @@ class Game extends Component {
       teams,
       players,
       statView,
-      changeStatView
+      changeStatView,
+      setSelectedSearchResult
     } = this.props;
     return (
       <div className="game-wrapper">
@@ -52,6 +54,7 @@ class Game extends Component {
               statView={statView}
               changeStatView={changeStatView}
               previousMatchup={previousMatchup}
+              setSelectedSearchResult={setSelectedSearchResult}
             />
           </div>
         ) : (
@@ -76,7 +79,8 @@ const mapDispatchToProps = dispatch =>
       fetchGameData,
       fetchPlayersData,
       fetchTeamsData,
-      changeStatView
+      changeStatView,
+      setSelectedSearchResult
     },
     dispatch
   );

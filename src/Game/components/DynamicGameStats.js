@@ -9,7 +9,8 @@ const DynamicGameStats = ({
   players,
   statView,
   changeStatView,
-  previousMatchup
+  previousMatchup,
+  setSelectedSearchResult
 }) => {
   const renderStatView = () => {
     switch (statView) {
@@ -19,10 +20,19 @@ const DynamicGameStats = ({
             gameStats={gameStats}
             basicGameData={basicGameData}
             previousMatchup={previousMatchup}
+            setSelectedSearchResult={setSelectedSearchResult}
           />
         );
       case "boxScore":
-        return <BoxScore />;
+        return (
+          <BoxScore
+            teams={teams}
+            gameStats={gameStats}
+            basicGameData={basicGameData}
+            previousMatchup={previousMatchup}
+            setSelectedSearchResult={setSelectedSearchResult}
+          />
+        );
       default:
         break;
     }

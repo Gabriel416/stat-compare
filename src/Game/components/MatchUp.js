@@ -1,23 +1,23 @@
 import React from "react";
 import findPlayer from "../../services/findPlayer";
 import avatar from "../../images/avatar.png";
+import arrangeTeamStats from "../../services/arrangeTeamStats";
 
-const MatchUp = ({ gameStats, basicGameData, previousMatchup }) => {
+const MatchUp = ({
+  gameStats,
+  basicGameData,
+  previousMatchup,
+  setSelectedSearchResult
+}) => {
+  let isPreviousMatchup = false;
   const arrangeData = () => {
-    if (
-      basicGameData.hTeam.teamId !== previousMatchup.basicGameData.hTeam.teamId
-    ) {
-      // If the previous match had an opposite home team switch roles around
-      let statsCopy = JSON.parse(JSON.stringify(previousMatchup.stats));
-      statsCopy.hTeam = previousMatchup.stats.vTeam;
-      statsCopy.vTeam = previousMatchup.stats.hTeam;
-
-      return statsCopy;
-    }
+    isPreviousMatchup = true;
+    return arrangeTeamStats(basicGameData, previousMatchup);
   };
+
   const stats = gameStats || arrangeData();
+  console.log(stats, "stats");
   const renderTeamLeaders = (leaders, isAway) => {
-    console.log(stats, "stats");
     return Object.keys(leaders).map((keyName, i) => {
       const stats = leaders[keyName];
       const associatedPlayer = stats.players.length
@@ -31,33 +31,38 @@ const MatchUp = ({ gameStats, basicGameData, previousMatchup }) => {
             style={{ flexDirection: isAway ? "row-reverse" : "row" }}
           >
             <img
-              src={associatedPlayer.photo}
-              onError={e => {
-                e.target.src = avatar;
-              }}
+              src={associatedPlayer.photo || avatar}
+              onClick={() => setSelectedSearchResult(associatedPlayer.info)}
               alt="Player picture"
             />
             <p>{associatedPlayer.lastName}</p>
+
             <p className="stat-matchup-value">{stats.value}</p>
           </div>
         </div>
       );
     });
   };
+
   return (
-    <div className="team-leaders-container">
-      <div className="stat-leaders-wrapper">
-        {renderTeamLeaders(stats.hTeam.leaders)}
-      </div>
-      <div className="stat-leaders-wrapper">
-        <div className="stat-categories">
-          <p>Points</p>
-          <p>Rebounds</p>
-          <p>Assists</p>
+    <div>
+      <h6 className="text-center">
+        {isPreviousMatchup ? "Team Leaders (Previous Matchup)" : "Team Leaders"}
+      </h6>
+      <div className="team-leaders-container">
+        <div className="stat-leaders-wrapper">
+          {renderTeamLeaders(stats.hTeam.leaders)}
         </div>
-      </div>
-      <div className="stat-leaders-wrapper">
-        {renderTeamLeaders(stats.vTeam.leaders, true)}
+        <div className="stat-leaders-wrapper">
+          <div className="stat-categories">
+            <p>Points</p>
+            <p>Rebounds</p>
+            <p>Assists</p>
+          </div>
+        </div>
+        <div className="stat-leaders-wrapper">
+          {renderTeamLeaders(stats.vTeam.leaders, true)}
+        </div>
       </div>
     </div>
   );

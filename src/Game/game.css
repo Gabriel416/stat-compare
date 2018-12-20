@@ -80,7 +80,7 @@
 .stat-options {
   display: flex;
   justify-content: space-evenly;
-  margin: 40px auto 0px auto;
+  margin: 40px auto 20px auto;
   max-width: 900px;
 }
 
@@ -120,6 +120,7 @@
 .stat-leaders img {
   height: 60px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .stat-categories {
@@ -137,6 +138,44 @@
 .stat-matchup-value {
   font-size: 25px;
   font-weight: bold;
+}
+
+.player-data img {
+  height: 45px;
+}
+
+.player-data {
+  cursor: pointer;
+}
+
+.previous-matchup-final div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  margin: 30px 0px;
+}
+
+.previous-matchup-final h3 {
+  margin: 0px 20px;
+}
+
+.table-responsive {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+table th {
+  font-size: 16px;
+}
+
+table td {
+  font-size: 18px;
+}
+
+table td,
+table th {
+  width: 100px;
 }
 
 @media screen and (max-width: 700px) {
@@ -168,6 +207,23 @@
 
   .stat-leaders img {
     height: 40px;
+  }
+
+  table th {
+    font-size: 14px;
+  }
+
+  table td {
+    font-size: 16px;
+  }
+
+  table {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .player-data img {
+    height: 35px;
   }
 }
 
