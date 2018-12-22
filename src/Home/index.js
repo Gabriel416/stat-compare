@@ -12,10 +12,6 @@ import {
 import Scoreboard from "./components/Scoreboard";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { fetchTeamsData, fetchPlayersData, calendarDate } = this.props;
 

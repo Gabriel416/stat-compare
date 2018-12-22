@@ -32,7 +32,7 @@ const BoxScore = ({
             className="player-data"
             onClick={() => playerData.photo && setSelectedSearchResult(player)}
           >
-            <img src={playerData.photo || avatar} alt="player image" />
+            <img src={playerData.photo || avatar} alt="player" />
             <br />
             {playerName}
           </td>

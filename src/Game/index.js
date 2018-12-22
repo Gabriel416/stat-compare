@@ -13,10 +13,6 @@ import DynamicGameStats from "./components/DynamicGameStats";
 import "./game.css";
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const {
       fetchGameData,

@@ -8,10 +8,6 @@ import "./player.css";
 import Profile from "./components/Profile";
 
 class Player extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { fetchTeamsData, fetchPlayersData } = this.props;
     fetchPlayersData();

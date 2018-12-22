@@ -34,7 +34,7 @@ const MatchUp = ({
             <img
               src={associatedPlayer.photo || avatar}
               onClick={() => setSelectedSearchResult(associatedPlayer.info)}
-              alt="Player picture"
+              alt="Player"
             />
             <p>{associatedPlayer.lastName}</p>
 
