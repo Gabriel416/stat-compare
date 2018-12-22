@@ -1,7 +1,7 @@
 import { push } from "connected-react-router";
 import { getData } from "./http";
 import { playerToCompare } from "./players";
-import { playerStatsUrl } from "../config";
+import { playerStatsUrl, uri } from "../config";
 
 const SEARCH_INPUT_CHANGE = "SEARCH_INPUT_CHANGE";
 const PLAYER_INPUT_CHANGE = "PLAYER_INPUT_CHANGE";
@@ -139,13 +139,13 @@ export const setSelectedSearchResult = searchResult => {
           playerStats: playerStats.league.standard.stats
         }
       });
-      dispatch(push(`/player/${searchResult.personId}`));
+      dispatch(push(`${uri}/player/${searchResult.personId}`));
     } else {
       dispatch({
         type: SET_SELECTED_SEARCH_RESULT,
         payload: searchResult
       });
-      dispatch(push(`/team/${searchResult.teamId}`));
+      dispatch(push(`${uri}/team/${searchResult.teamId}`));
     }
   };
 };

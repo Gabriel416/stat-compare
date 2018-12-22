@@ -1,3 +1,5 @@
+export const uri = "/stat-compare";
+
 export const year = new Date().getFullYear();
 export const tempMonth = new Date().getMonth() + 1;
 export const month = (tempMonth < 10 ? "0" : "") + tempMonth;
@@ -14,8 +16,6 @@ export const teamsLeadersUrl = `https://data.nba.net/prod/v1/${year}/teams/teamI
 export const scoreBoardUrl = `https://data.nba.net/prod/v1/${year}${month}${date}/scoreboard.json`;
 export const boxScoreUrl = `https://data.nba.net/prod/v1/timeStamp/gameId_boxscore.json`;
 export const todayUrl = "https://data.nba.net/10s/prod/v1/today.json";
-export const shotChart =
-  "https://stats.nba.com/events/?flag=3&CFID=&CFPARAMS=&PlayerID=201933&TeamID=1610612765&GameID=0021800049&ContextMeasure=FG3A&Season=2018-19&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=31800&section=game&sct=plot";
 
 export const playerHeadShot = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/teamId/${year}/260x190/personId.png`;
 

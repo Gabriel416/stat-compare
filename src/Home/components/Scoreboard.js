@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
-import { teamStyles } from "../../config";
+import { teamStyles, uri } from "../../config";
 import { calculateGameStatus } from "../../services/calculateGameStatus";
 import "./scoreboard.css";
 
@@ -27,7 +27,7 @@ const Scoreboard = ({
             className={classnames("col-sm-12 col-md-12 col-lg-6")}
             key={game.gameId}
           >
-            <Link to={`/game/${game.gameId}`} className="game-link">
+            <Link to={`${uri}/game/${game.gameId}`} className="game-link">
               <div className="col-sm-12 game-card-wrapper">
                 <div className={classnames("home-team-section")}>
                   <img

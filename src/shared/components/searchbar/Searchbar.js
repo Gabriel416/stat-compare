@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { uri } from "../../../config";
 import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
 import {
@@ -127,7 +128,7 @@ class SearchBar extends Component {
     return (
       <div className="searchbar-wrapper">
         {showHome && (
-          <Link to="/" className="btn btn-primary">
+          <Link to={uri} className="btn btn-primary">
             Home
           </Link>
         )}
