@@ -1,4 +1,4 @@
-export const uri = "/stat-compare";
+export const uri = "/v1";
 
 export const year = new Date().getFullYear();
 export const tempMonth = new Date().getMonth() + 1;

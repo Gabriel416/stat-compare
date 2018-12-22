@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import { createBrowserHistory } from "history";
+import { createHashHistory } from "history";
 import thunkMiddleware from "redux-thunk";
 import { routerMiddleware } from "connected-react-router";
 import { persistStore, persistReducer } from "redux-persist";
@@ -13,7 +13,9 @@ const persistConfig = {
   storage
 };
 
-export const history = createBrowserHistory();
+export const history = createHashHistory({
+  hashType: "slash"
+});
 const persistedReducer = persistReducer(persistConfig, rootReducer(history));
 
 export const store = createStore(
