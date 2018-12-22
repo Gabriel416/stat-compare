@@ -32,7 +32,8 @@ class SearchBar extends Component {
       setComparedPlayer,
       resetSearchbar,
       placeholder,
-      playerCompare
+      playerCompare,
+      showHome
     } = this.props;
     const { cursor } = this.state;
 
@@ -83,6 +84,7 @@ class SearchBar extends Component {
           <div
             key={i}
             id={i}
+            data={JSON.stringify(result)}
             className={suggestionCardClasses}
             onMouseDown={() => onSubmit(result)}
           >
@@ -100,36 +102,31 @@ class SearchBar extends Component {
     };
 
     const handleKeyPresses = e => {
+      const element = document.querySelector(".autocomplete-items");
       // arrow up/down button should select next/previous list element
       if (e.keyCode === 38 && cursor > 0) {
         this.setState(prevState => ({
           cursor: prevState.cursor - 1
         }));
-        document.querySelector(".autocomplete-items").scrollTop -= 66;
+        element.scrollTop -= 66;
       } else if (e.keyCode === 40 && cursor < searchResults.length - 1) {
         this.setState(prevState => ({
           cursor: prevState.cursor + 1
         }));
-        document.querySelector(".autocomplete-items").scrollTop += 66;
+        element.scrollTop += 66;
       } else if (e.keyCode === 13) {
         /*If the ENTER key is pressed, prevent the form from being submitted,*/
         e.preventDefault();
-        let selectedIndex = document
-          .querySelector(".autocomplete-active")
-          .getAttribute("id");
-        this.setState(prevState => ({
-          cursor: prevState.cursor + 1
-        }));
-        onSubmit(searchResults[selectedIndex]);
       } else {
-        // reset counter if any other keys are entered
-        this.setState({ cursor: 0 });
+        this.setState(() => ({
+          cursor: 0
+        }));
       }
     };
 
     return (
       <div className="searchbar-wrapper">
-        {!playerCompare && (
+        {showHome && (
           <Link to="/" className="btn btn-primary">
             Home
           </Link>

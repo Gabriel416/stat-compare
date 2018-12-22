@@ -14,7 +14,6 @@ const Scoreboard = ({
   calendarDate,
   changeScoreboardDate
 }) => {
-  console.log("calendarDate :", calendarDate);
   const { scoreBoardGames } = scoreboardData;
 
   const renderGames = () => {

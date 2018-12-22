@@ -112,9 +112,10 @@ export const setSearchResults = search => {
         payload: null
       });
     } else {
+      // ADD TEAMS FEATURE IN FUTURE BY SPREADING MATCHED TEAMS IN ARR
       dispatch({
         type: SET_SEARCH_RESULTS,
-        payload: [...matchedTeams, ...matchedPlayers]
+        payload: [...matchedPlayers]
       });
       dispatch({
         type: SET_PLAYER_SEARCH_RESULTS,

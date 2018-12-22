@@ -30,7 +30,7 @@ const BoxScore = ({
           <td
             scope="row"
             className="player-data"
-            onClick={() => setSelectedSearchResult(player)}
+            onClick={() => playerData.photo && setSelectedSearchResult(player)}
           >
             <img src={playerData.photo || avatar} alt="player image" />
             <br />
@@ -55,22 +55,24 @@ const BoxScore = ({
       </h6>
 
       <div className="previous-matchup-final">
-        <div>
-          <span>
-            {
-              teams.find(team => team.teamId === basicGameData.hTeam.teamId)
-                .urlName
-            }
-          </span>
-          <h3>{stats.hTeam.totals.points}</h3>
-          <h3>{stats.vTeam.totals.points}</h3>
-          <span>
-            {
-              teams.find(team => team.teamId === basicGameData.vTeam.teamId)
-                .urlName
-            }
-          </span>
-        </div>
+        {stats && (
+          <div>
+            <span>
+              {
+                teams.find(team => team.teamId === basicGameData.hTeam.teamId)
+                  .urlName
+              }
+            </span>
+            <h3>{stats.hTeam.totals.points}</h3>
+            <h3>{stats.vTeam.totals.points}</h3>
+            <span>
+              {
+                teams.find(team => team.teamId === basicGameData.vTeam.teamId)
+                  .urlName
+              }
+            </span>
+          </div>
+        )}
       </div>
       <div className="table-responsive text-left">
         <table className="table table-sm table-striped">
@@ -86,7 +88,7 @@ const BoxScore = ({
               <th scope="col">FG%</th>
             </tr>
           </thead>
-          <tbody>{renderBoxScoreTable(stats)}</tbody>
+          <tbody>{stats && renderBoxScoreTable(stats)}</tbody>
         </table>
       </div>
     </div>

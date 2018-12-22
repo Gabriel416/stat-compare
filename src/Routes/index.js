@@ -17,7 +17,7 @@ const Game = Loadable({
 
 const Routes = (
   <div>
-    <Searchbar />
+    <Searchbar showHome={true} placeholder={"Search for any player"} />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/player/:id" component={Player} />
