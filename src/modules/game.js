@@ -1,5 +1,5 @@
 import { getData } from "./http";
-import { boxScoreUrl, year, month, date } from "../config";
+import { boxScoreUrl } from "../config";
 
 const SET_GAME_DATA = "SET_GAME_DATA";
 const SET_STATS_TO_VIEW = "SET_STATS_TO_VIEW";
@@ -37,33 +37,39 @@ export default (state = initialState, action) => {
 };
 
 export const fetchGameData = gameId => {
-  return async dispatch => {
-    const gameData = await dispatch(
-      getData(boxScoreUrl.replace("gameId", gameId))
+  return async (dispatch, getState) => {
+    let mapObj = {
+      timeStamp: getState().scoreboard.calendarDate.urlDate,
+      gameId
+    };
+    const gameUrl = boxScoreUrl.replace(
+      /timeStamp|gameId/gi,
+      matched => mapObj[matched]
     );
-    const gameDate = `${year}${month}${date}`;
 
-    const prevMatchUpUrl = boxScoreUrl
-      .split("/")
-      .reduce((acc, partialString) => {
-        if (partialString.includes(gameDate)) {
-          partialString = gameData.previousMatchup.gameDate;
-        }
-        return (acc += `${partialString}/`);
-      }, "")
-      .slice(0, -1);
+    const gameData = await dispatch(getData(gameUrl));
 
-    const previousMatchUp = await dispatch(
-      getData(prevMatchUpUrl.replace("gameId", gameData.previousMatchup.gameId))
-    );
+    if (gameData.previousMatchup) {
+      mapObj = {
+        timeStamp: gameData.previousMatchup.gameDate,
+        gameId: gameData.previousMatchup.gameId
+      };
+      const prevMatchUpUrl = boxScoreUrl.replace(
+        /timeStamp|gameId/gi,
+        matched => mapObj[matched]
+      );
+
+      const previousMatchUp = await dispatch(getData(prevMatchUpUrl));
+
+      dispatch({
+        type: SET_PREVIOUS_MATCHUP,
+        payload: previousMatchUp
+      });
+    }
 
     dispatch({
       type: SET_GAME_DATA,
       payload: gameData
-    });
-    dispatch({
-      type: SET_PREVIOUS_MATCHUP,
-      payload: previousMatchUp
     });
   };
 };

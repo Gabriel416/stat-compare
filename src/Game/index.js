@@ -40,9 +40,10 @@ class Game extends Component {
       changeStatView,
       setSelectedSearchResult
     } = this.props;
+
     return (
       <div className="game-wrapper">
-        {gameData && teams ? (
+        {gameData && gameData.basicGameData && teams ? (
           <div>
             <GameHeader basicGameData={gameData.basicGameData} teams={teams} />
             <GameDetails basicGameData={gameData.basicGameData} teams={teams} />
@@ -58,7 +59,7 @@ class Game extends Component {
             />
           </div>
         ) : (
-          "Loading..."
+          "We couldn't find any info on that game whoops :("
         )}
       </div>
     );

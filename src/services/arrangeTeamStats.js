@@ -1,4 +1,8 @@
 export default (basicGameData, previousMatchup) => {
+  if (!basicGameData || !previousMatchup.stats) {
+    return null;
+  }
+
   if (
     basicGameData.hTeam.teamId !== previousMatchup.basicGameData.hTeam.teamId
   ) {

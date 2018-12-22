@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
+import { todaysDate } from "../config";
 import { fetchPlayersData } from "../modules/players";
 import { fetchTeamsData } from "../modules/teams";
-import { fetchScoreboardData } from "../modules/scoreboard";
+import {
+  fetchScoreboardData,
+  changeScoreboardDate
+} from "../modules/scoreboard";
 
 import Scoreboard from "./components/Scoreboard";
 
@@ -13,27 +17,39 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const {
-      fetchTeamsData,
-      fetchPlayersData,
-      fetchScoreboardData
-    } = this.props;
+    const { fetchTeamsData, fetchPlayersData, calendarDate } = this.props;
 
     fetchPlayersData();
     fetchTeamsData();
-    fetchScoreboardData();
+    this.getScores(calendarDate);
 
     setInterval(() => {
-      fetchScoreboardData();
+      this.getScores(calendarDate);
     }, 20000);
   }
 
+  getScores = calendarDate => {
+    todaysDate === calendarDate.humanReadable
+      ? fetchScoreboardData()
+      : changeScoreboardDate(calendarDate.fullDate);
+  };
+
   render() {
-    const { teams, scoreboardData } = this.props;
+    const {
+      teams,
+      scoreboardData,
+      calendarDate,
+      changeScoreboardDate
+    } = this.props;
 
     return (
       <div>
-        <Scoreboard scoreboardData={scoreboardData} teams={teams} />
+        <Scoreboard
+          scoreboardData={scoreboardData}
+          teams={teams}
+          calendarDate={calendarDate}
+          changeScoreboardDate={changeScoreboardDate}
+        />
       </div>
     );
   }
@@ -41,7 +57,8 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   teams: state.teams.teamData,
-  scoreboardData: state.scoreboard
+  scoreboardData: state.scoreboard,
+  calendarDate: state.scoreboard.calendarDate
 });
 
 const mapDispatchToProps = dispatch =>
@@ -49,7 +66,8 @@ const mapDispatchToProps = dispatch =>
     {
       fetchPlayersData,
       fetchTeamsData,
-      fetchScoreboardData
+      fetchScoreboardData,
+      changeScoreboardDate
     },
     dispatch
   );

@@ -28,12 +28,10 @@ export const getData = url => {
       .get(proxy + url)
       .then(response => {
         dispatch({ type: IS_LOADING, payload: false });
-        console.log(response, "response");
         return response.data;
       })
       .catch(error => {
         dispatch({ type: IS_LOADING, payload: false });
-        console.log(error);
         return error;
       });
   };

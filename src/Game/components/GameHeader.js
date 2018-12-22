@@ -20,12 +20,14 @@ const GameHeader = ({ basicGameData, teams }) => {
   };
 
   return (
-    <div className="game-header-wrapper col-sm-12">
-      {renderHeader(basicGameData.hTeam)}
+    <div>
       <div className="game-header-status">
         {calculateGameStatus(basicGameData)}
       </div>
-      {renderHeader(basicGameData.vTeam, true)}
+      <div className="game-header-wrapper col-sm-12">
+        {renderHeader(basicGameData.hTeam)}
+        {renderHeader(basicGameData.vTeam, true)}
+      </div>
     </div>
   );
 };

@@ -57,6 +57,11 @@
   text-decoration: none;
 }
 
+.scoreboard-no-games {
+  font-size: 22px;
+  margin: 30px auto 0px auto;
+}
+
 @media screen and (max-width: 1300px) {
   .game-status {
     top: 37%;

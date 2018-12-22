@@ -37,7 +37,7 @@ const DynamicGameStats = ({
         break;
     }
   };
-  console.log(statView, "stat view");
+
   return (
     <div className="dynamic-game-stats-wrapper">
       <div className="stat-options">

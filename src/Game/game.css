@@ -42,8 +42,11 @@
 
 .game-header-status {
   font-size: 20px;
+  margin: 0px 10px;
   display: flex;
   justify-content: center;
+  position: relative;
+  top: 85px;
   flex-direction: column;
 }
 
@@ -194,7 +197,8 @@ table th {
   }
 
   .game-header-status {
-    font-size: 14px;
+    font-size: 13px;
+    top: 50px;
   }
 
   .overlay-text {
@@ -227,6 +231,13 @@ table th {
   }
 }
 
+@media screen and (max-width: 635px) {
+  .game-header-status {
+    font-size: 11px;
+    /* top: 85px; */
+  }
+}
+
 @media screen and (max-width: 550px) {
   .game-team-name {
     width: 100px;
@@ -240,6 +251,11 @@ table th {
 
   .game-header-content {
     margin: 0px 10px;
+  }
+
+  .game-header-status {
+    top: 40px;
+    font-size: 10px;
   }
 }
 
@@ -261,7 +277,7 @@ table th {
   }
 
   .stat-categories p {
-    margin: 0 15px;
+    margin: 0 10px;
   }
 
   .stat-leaders img {
@@ -278,6 +294,32 @@ table th {
 
   .stat-matchup-value {
     font-size: 16px !important;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .stat-leaders-wrapper {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .game-header-status {
+    top: 5px;
+  }
+
+  .stat-categories p {
+    font-size: 10px;
+  }
+
+  .stat-leaders p {
+    margin: 0px 3px;
+    font-size: 12px;
+  }
+
+  .stat-matchup-value {
+    font-size: 14px !important;
     font-weight: bold;
   }
 }

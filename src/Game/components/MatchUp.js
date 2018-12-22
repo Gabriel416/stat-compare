@@ -10,13 +10,14 @@ const MatchUp = ({
   setSelectedSearchResult
 }) => {
   let isPreviousMatchup = false;
+
   const arrangeData = () => {
     isPreviousMatchup = true;
     return arrangeTeamStats(basicGameData, previousMatchup);
   };
 
   const stats = gameStats || arrangeData();
-  console.log(stats, "stats");
+
   const renderTeamLeaders = (leaders, isAway) => {
     return Object.keys(leaders).map((keyName, i) => {
       const stats = leaders[keyName];
@@ -51,17 +52,17 @@ const MatchUp = ({
       </h6>
       <div className="team-leaders-container">
         <div className="stat-leaders-wrapper">
-          {renderTeamLeaders(stats.hTeam.leaders)}
+          {stats && renderTeamLeaders(stats.hTeam.leaders)}
         </div>
         <div className="stat-leaders-wrapper">
           <div className="stat-categories">
-            <p>Points</p>
-            <p>Rebounds</p>
-            <p>Assists</p>
+            <p>PTS</p>
+            <p>RBS</p>
+            <p>AST</p>
           </div>
         </div>
         <div className="stat-leaders-wrapper">
-          {renderTeamLeaders(stats.vTeam.leaders, true)}
+          {stats && renderTeamLeaders(stats.vTeam.leaders, true)}
         </div>
       </div>
     </div>

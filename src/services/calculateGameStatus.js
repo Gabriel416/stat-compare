@@ -1,6 +1,9 @@
 import React from "react";
 
 export const calculateGameStatus = game => {
+  if (!game) {
+    return;
+  }
   // Game hasn't started
   if (!game.isGameActivated && !parseFloat(game.gameDuration.minutes)) {
     return (

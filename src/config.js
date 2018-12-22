@@ -1,5 +1,6 @@
 export const year = new Date().getFullYear();
-export const month = new Date().getMonth() + 1;
+export const tempMonth = new Date().getMonth() + 1;
+export const month = (tempMonth < 10 ? "0" : "") + tempMonth;
 export const date =
   (new Date().getDate() < 10 ? "0" : "") + new Date().getDate();
 
@@ -11,7 +12,7 @@ export const teamsScheduleUrl = `https://data.nba.net/prod/v1/${year}/teams/team
 export const teamsRosterUrl = `https://data.nba.net/prod/v1/${year}/teams/teamId/roster.json`;
 export const teamsLeadersUrl = `https://data.nba.net/prod/v1/${year}/teams/teamId/leaders.json`;
 export const scoreBoardUrl = `https://data.nba.net/prod/v1/${year}${month}${date}/scoreboard.json`;
-export const boxScoreUrl = `https://data.nba.net/prod/v1/${year}${month}${date}/gameId_boxscore.json`;
+export const boxScoreUrl = `https://data.nba.net/prod/v1/timeStamp/gameId_boxscore.json`;
 export const todayUrl = "https://data.nba.net/10s/prod/v1/today.json";
 export const shotChart =
   "https://stats.nba.com/events/?flag=3&CFID=&CFPARAMS=&PlayerID=201933&TeamID=1610612765&GameID=0021800049&ContextMeasure=FG3A&Season=2018-19&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=31800&section=game&sct=plot";
@@ -210,5 +211,77 @@ export const teamStyles = {
     primary: "#00653A",
     secondary: "#FFC200",
     alternate: "#FFFFFF"
+  },
+  bullets: {
+    primary: "#002A76",
+    secondary: "#EF9B21",
+    alternate: "#FFFFFF",
+    logo: `https://upload.wikimedia.org/wikipedia/en/thumb/7/7f/Brisbane_Bullets_logo.svg/1200px-Brisbane_Bullets_logo.svg.png`
+  },
+  "long-lions": {
+    primary: "#0D193F",
+    secondary: "#E7002B",
+    alternate: "FFFFFF",
+    logo: `https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Guangzhou_Long-Lions_logo.png/220px-Guangzhou_Long-Lions_logo.png`
+  },
+  maccabi_haifa: {
+    primary: "#125C30",
+    secondary: "#050708",
+    alternate: "#FFFFFF",
+    logo: `https://upload.wikimedia.org/wikipedia/en/4/4c/Maccabi_Haifa_B.C_logo.png`
+  },
+  united: {
+    primary: "#151926",
+    secondary: "#FFFFFF",
+    alternate: "#BBBBBB",
+    logo: `https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Melbourne_United_logo.svg/220px-Melbourne_United_logo.svg.png`
+  },
+  shanghai_sharks: {
+    primary: "#B52125",
+    secondary: "#0519A",
+    alternate: "#FFFFFF",
+    logo: `https://upload.wikimedia.org/wikipedia/en/3/38/Shanghai_Sharks_logo.png`
+  },
+  sydkings: {
+    primary: "#5A3E9B",
+    secondary: "#FFCA36",
+    alternate: "#FFFFFF",
+    logo: `https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Sydney_Kings_logo.svg/220px-Sydney_Kings_logo.svg.png`
+  },
+  team_lebron: {
+    primary: "#FFFFFF",
+    secondary: "#000000",
+    alternate: "#FFFFFF",
+    logo: `https://asset-sports.abs-cbn.com/web/dev/articles/1517442708_1516948010-1516753206-1515996790-1510273922-as18-losangeles-starlogo.jpg`
+  },
+  team_stephen: {
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    alternate: "#000000",
+    logo: `https://asset-sports.abs-cbn.com/web/dev/articles/1517442708_1516948010-1516753206-1515996790-1510273922-as18-losangeles-starlogo.jpg`
+  },
+  team_clippers: {
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    alternate: "#000000",
+    logo: `https://asset-sports.abs-cbn.com/web/dev/articles/1517442708_1516948010-1516753206-1515996790-1510273922-as18-losangeles-starlogo.jpg`
+  },
+  team_lakers: {
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    alternate: "#000000",
+    logo: `https://asset-sports.abs-cbn.com/web/dev/articles/1517442708_1516948010-1516753206-1515996790-1510273922-as18-losangeles-starlogo.jpg`
+  },
+  usa: {
+    primary: "#002655",
+    secondary: "#E60E34",
+    alternate: "#FFFFFF",
+    logo: `https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Usa_basketball_2012.png/160px-Usa_basketball_2012.png`
+  },
+  world: {
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    alternate: "#000000",
+    logo: `https://asset-sports.abs-cbn.com/web/dev/articles/1517442708_1516948010-1516753206-1515996790-1510273922-as18-losangeles-starlogo.jpg`
   }
 };
