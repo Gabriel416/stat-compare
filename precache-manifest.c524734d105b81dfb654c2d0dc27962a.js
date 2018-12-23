@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/stat-compare/static/media/avatar.d34cd8af.png"
   },
   {
-    "revision": "b693aa20b54efb86b9e1f55eae193262",
+    "revision": "5fc2a9e50422f8aec1b6d2eb54b2c5d2",
     "url": "/stat-compare/index.html"
   }
 ];
