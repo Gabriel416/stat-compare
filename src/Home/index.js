@@ -19,12 +19,20 @@ class Home extends Component {
     fetchTeamsData();
     this.getScores(calendarDate);
 
+    // TO TAKE INTO ACCOUNT HEROKU START UP
+    // FOR PROXY SERVER IF ISNT WOKEN UP
+    setTimeout(() => {
+      this.getScores(calendarDate);
+    }, 8000);
+
+    // REFETCH THREE TIMES A MINUTE
     setInterval(() => {
       this.getScores(calendarDate);
     }, 20000);
   }
 
   getScores = calendarDate => {
+    console.log("FIRED");
     todaysDate === calendarDate.humanReadable
       ? fetchScoreboardData()
       : changeScoreboardDate(calendarDate.fullDate);
@@ -35,7 +43,8 @@ class Home extends Component {
       teams,
       scoreboardData,
       calendarDate,
-      changeScoreboardDate
+      changeScoreboardDate,
+      isLoading
     } = this.props;
 
     return (
@@ -45,6 +54,7 @@ class Home extends Component {
           teams={teams}
           calendarDate={calendarDate}
           changeScoreboardDate={changeScoreboardDate}
+          isLoading={isLoading}
         />
       </div>
     );
@@ -52,6 +62,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
+  isLoading: state.http.isLoading,
   teams: state.teams.teamData,
   scoreboardData: state.scoreboard,
   calendarDate: state.scoreboard.calendarDate

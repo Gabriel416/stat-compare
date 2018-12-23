@@ -12,7 +12,8 @@ const Scoreboard = ({
   scoreboardData,
   teams,
   calendarDate,
-  changeScoreboardDate
+  changeScoreboardDate,
+  isLoading
 }) => {
   const { scoreBoardGames } = scoreboardData;
 
@@ -84,7 +85,7 @@ const Scoreboard = ({
             teams &&
             renderGames()) || (
             <p className="scoreboard-no-games">
-              No games we're played that day
+              {isLoading ? "Loading..." : "No games we're played that day"}
             </p>
           )}
         </div>

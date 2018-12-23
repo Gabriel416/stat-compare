@@ -1,19 +1,19 @@
 {
   "short_name": "Stat App",
-  "name": "NBA Stat App",
+  "name": "NBA Stat",
   "icons": [
     {
-      "src": "/favicon/favicon.ico",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "/favicon/apple-touch-icon-152x152.png",
+      "src": "apple-touch-icon-152x152.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/favicon/apple-touch-icon-152x152.png",
+      "src": "apple-touch-icon-152x152.png",
       "sizes": "512x512",
       "type": "image/png"
     }
