@@ -1,3 +1,10 @@
+## Stat Compare
+
+NBA Scoreboard app that shows the latest scores
+and player comparisons
+
+Check it out [here](https://gabriel416.github.io/stat-compare/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
