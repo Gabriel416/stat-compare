@@ -32,7 +32,6 @@ class Home extends Component {
   }
 
   getScores = calendarDate => {
-    console.log("FIRED");
     todaysDate === calendarDate.humanReadable
       ? fetchScoreboardData()
       : changeScoreboardDate(calendarDate.fullDate);
