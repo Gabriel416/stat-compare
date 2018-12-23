@@ -5,8 +5,8 @@ player stats and comparisons. Check it out [here](https://gabriel416.github.io/s
 
 ###### Tech Stack Used
 
-React
-Redux
+React,
+Redux,
 React Router
 
 ###### To test locally
