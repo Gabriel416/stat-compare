@@ -16,10 +16,10 @@
   "runtime~main.js": "/stat-compare/static/js/runtime~main.1366cfe7.js",
   "runtime~main.js.map": "/stat-compare/static/js/runtime~main.1366cfe7.js.map",
   "static/media/avatar.png": "/stat-compare/static/media/avatar.d34cd8af.png",
-  "static/css/main.359bb9e1.chunk.css.map": "/stat-compare/static/css/main.359bb9e1.chunk.css.map",
   "static/css/1.131f2289.chunk.css.map": "/stat-compare/static/css/1.131f2289.chunk.css.map",
-  "static/css/2.9d95220c.chunk.css.map": "/stat-compare/static/css/2.9d95220c.chunk.css.map",
+  "static/css/main.359bb9e1.chunk.css.map": "/stat-compare/static/css/main.359bb9e1.chunk.css.map",
   "static/css/3.7c163458.chunk.css.map": "/stat-compare/static/css/3.7c163458.chunk.css.map",
+  "static/css/2.9d95220c.chunk.css.map": "/stat-compare/static/css/2.9d95220c.chunk.css.map",
   "index.html": "/stat-compare/index.html",
   "precache-manifest.d4b6c9c2f188d92d744d0a882606b7be.js": "/stat-compare/precache-manifest.d4b6c9c2f188d92d744d0a882606b7be.js",
   "service-worker.js": "/stat-compare/service-worker.js"
