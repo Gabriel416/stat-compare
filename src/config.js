@@ -1,6 +1,6 @@
 export const uri = "/v1";
 
-export const year = new Date().getFullYear();
+export const year = new Date().getFullYear() - 1;
 export const tempMonth = new Date().getMonth() + 1;
 export const month = (tempMonth < 10 ? "0" : "") + tempMonth;
 export const date =
