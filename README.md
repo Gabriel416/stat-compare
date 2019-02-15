@@ -1,7 +1,7 @@
 ## Stat Compare :basketball:
 
-A Progressive Web App that shows NBA game scores,
-player stats and comparisons. Check it out [here](https://gabriel416.github.io/stat-compare/)
+A Web App that shows NBA game scores,
+player stats and comparisons. 
 
 ###### Tech Stack Used
 
